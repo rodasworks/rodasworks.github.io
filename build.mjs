@@ -27,7 +27,7 @@ const head = ({ titulo, descripcion, raiz, extraStyle = "" }) => `<!doctype html
 <title>${esc(titulo)}</title>
 <meta name="description" content="${esc(descripcion)}">
 <meta name="color-scheme" content="light">
-<link rel="preload" href="${raiz}assets/fonts/bricolage.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="${raiz}assets/fonts/schibsted.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="${raiz}assets/css/site.css">
 ${extraStyle}
 <script src="${raiz}assets/js/site.js" defer></script>
@@ -63,24 +63,39 @@ const filtros = `<div class="filtros" role="group" aria-label="Filtrar proyectos
         `<button type="button" data-filtro="${slugDisc(d)}" aria-pressed="false">${esc(d)} <span class="n">${conteo[d]}</span></button>`
     )
     .join("\n  ")}
-</div>
-<div class="vista-selector" role="group" aria-label="Forma de ver los proyectos" hidden>
-  <button type="button" data-vista="lista" aria-pressed="true">Lista</button>
-  <button type="button" data-vista="grilla" aria-pressed="false">Grilla</button>
 </div>`;
 
-const filas = proyectos
-  .map(
-    (p) => `<li class="proyecto" data-disciplinas="${p.disciplinas.map(slugDisc).join(" ")}" style="${universo(p)}">
-    <a href="proyectos/${p.slug}/" data-slug="${p.slug}">
-      <span class="miniatura" aria-hidden="true"><span>${esc(p.imagenes[0]?.texto ?? "")}</span></span>
-      <span class="nombre" style="view-transition-name:t-${p.slug}">${esc(p.nombre)}</span>
-      <span class="resumen">${esc(p.resumen)}</span>
-      <span class="disc">${p.disciplinas.map(esc).join(", ")}</span>
-      <span class="anio">${txt(p.anio)}</span>
-    </a>
-  </li>`
-  )
+const bandas = proyectos
+  .map((p, i) => {
+    const piezas = p.imagenes
+      .map(
+        (img) => `<li><figure class="pieza ${img.formato}">
+          <div class="pieza-img"><span>Imagen pendiente</span></div>
+          <figcaption>${esc(img.texto)}</figcaption>
+        </figure></li>`
+      )
+      .join("\n        ");
+    return `<section class="banda${i === 0 ? " destacada" : ""}" data-disciplinas="${p.disciplinas.map(slugDisc).join(" ")}" style="${universo(p)}" aria-labelledby="b-${p.slug}">
+    <div class="banda-texto">
+      <h3 id="b-${p.slug}"><a href="proyectos/${p.slug}/" style="view-transition-name:t-${p.slug}">${esc(p.nombre)}</a></h3>
+      <p class="resumen">${esc(p.resumen)}</p>
+      <p class="conteo" aria-label="${p.imagenes.length} piezas">(${p.imagenes.length})</p>
+    </div>
+    <div class="serie" role="region" aria-label="Piezas de ${esc(p.nombre)}" tabindex="0">
+      <ul>
+        ${piezas}
+      </ul>
+    </div>
+    <div class="banda-pie">
+      <ul class="etiquetas" aria-label="Disciplinas">${p.disciplinas.map((d) => `<li>${esc(d)}</li>`).join("")}<li class="anio">${txt(p.anio)}</li></ul>
+      <div class="serie-botones" hidden>
+        <button type="button" data-dir="-1">Anterior</button>
+        <button type="button" data-dir="1">Siguiente</button>
+      </div>
+      <a class="ver" href="proyectos/${p.slug}/">Ver proyecto</a>
+    </div>
+  </section>`;
+  })
   .join("\n  ");
 
 const indice = `${head({
@@ -93,8 +108,8 @@ const indice = `${head({
 ${cabeceraSitio("./", "inicio")}
 <main id="contenido">
   <section class="intro" aria-labelledby="intro-titulo">
-    <h1 id="intro-titulo">Construyo universos de marca: identidades, campañas, libros, animación y contenido con IA.</h1>
-    <p class="quien">Soy Patricio Rodas, diseñador gráfico en Santiago de Chile. Cada proyecto de esta página tiene su propio mundo de color.</p>
+    <h1 id="intro-titulo">Diseño de marca, campañas, libros, animación y contenido con IA.</h1>
+    <p class="quien">Soy Patricio Rodas, diseñador gráfico en Santiago de Chile. Construyo marcas completas: desde el logo hasta el último anuncio.</p>
   </section>
 
   <section id="proyectos" class="proyectos" aria-labelledby="proyectos-titulo">
@@ -102,9 +117,7 @@ ${cabeceraSitio("./", "inicio")}
       <h2 id="proyectos-titulo">Proyectos</h2>
       ${filtros}
     </div>
-    <ol class="indice" data-vista="lista">
-  ${filas}
-    </ol>
+  ${bandas}
     <p class="sin-resultados" hidden>No hay proyectos en esta disciplina todavía.</p>
   </section>
 

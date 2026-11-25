@@ -1,37 +1,30 @@
 /* Rodas Works — hoja de estilos
-   Un paraguas neutro (papel frío y tinta azul-negra) donde cada proyecto trae su propio universo de color. */
+   Fondo blanco y tipografía sobria: el trabajo pone el color. Cada proyecto es una banda con su serie de piezas. */
 
 @font-face {
-  font-family: "Bricolage";
-  src: url("../fonts/bricolage.woff2") format("woff2-variations");
-  font-weight: 200 800;
-  font-stretch: 75% 100%;
+  font-family: "Schibsted";
+  src: url("../fonts/schibsted.woff2") format("woff2-variations");
+  font-weight: 400 900;
   font-display: swap;
 }
 
 :root {
-  --papel: #eceef1;
-  --negro: #161a22;
-  --grafito: #4f5664;
-  --linea: #c3c8d0;
+  --blanco: #ffffff;
+  --negro: #1c1c1c;
+  --gris: #5e5e5e;
+  --linea: #e2e2e2;
+  --etiqueta: #f0f0f0;
   --pendiente-fondo: #ffe27a;
 
-  /* Universo activo (cambia al pasar por un proyecto) */
-  --u-fondo: var(--papel);
-  --u-tinta: var(--negro);
-
   --margen: clamp(1.25rem, 4vw, 3.5rem);
-  --ancho-texto: 64ch;
+  --ancho-texto: 62ch;
+  --alto-pieza: clamp(15rem, 34vw, 27rem);
 
-  /* Escala tipográfica (cuarta, 1.333) */
   --t-0: 0.875rem;
-  --t-1: 1.125rem;
-  --t-2: 1.5rem;
-  --t-3: 2rem;
-  --t-display: clamp(2.5rem, 6.2vw, 5.75rem);
-  --t-nombre: clamp(2.1rem, 6.4vw, 5.5rem);
-
-  --suave: 0.45s cubic-bezier(0.2, 0.7, 0.2, 1);
+  --t-1: 1.0625rem;
+  --t-2: 1.375rem;
+  --t-3: clamp(1.75rem, 3.4vw, 2.75rem);
+  --t-display: clamp(2.1rem, 4.6vw, 3.75rem);
 }
 
 @view-transition {
@@ -52,13 +45,12 @@ html {
 
 body {
   margin: 0;
-  font-family: "Bricolage", system-ui, sans-serif;
+  font-family: "Schibsted", system-ui, sans-serif;
   font-size: var(--t-1);
-  line-height: 1.5;
-  font-optical-sizing: auto;
-  background: var(--u-fondo);
-  color: var(--u-tinta);
-  transition: background-color var(--suave), color var(--suave);
+  line-height: 1.55;
+  background: var(--blanco);
+  color: var(--negro);
+  overflow-x: clip;
 }
 
 img,
@@ -71,17 +63,18 @@ iframe {
 a {
   color: inherit;
   text-decoration-thickness: 1px;
-  text-underline-offset: 0.18em;
+  text-underline-offset: 0.2em;
 }
 
 :focus-visible {
-  outline: 3px solid currentColor;
+  outline: 2px solid currentColor;
   outline-offset: 3px;
   border-radius: 2px;
 }
 
 h1,
 h2,
+h3,
 p,
 ul,
 ol,
@@ -97,7 +90,7 @@ figure {
   top: -4rem;
   padding: 0.5rem 0.9rem;
   background: var(--negro);
-  color: var(--papel);
+  color: var(--blanco);
   z-index: 10;
 }
 .saltar:focus {
@@ -114,27 +107,30 @@ figure {
   -webkit-box-decoration-break: clone;
 }
 
-/* ---------- Cabecera del sitio ---------- */
+/* ---------- Cabecera ---------- */
 .sitio {
+  position: sticky;
+  top: 0;
+  z-index: 5;
   display: flex;
   justify-content: space-between;
   align-items: baseline;
   gap: 1.5rem;
-  padding: 1.25rem var(--margen);
+  padding: 1.1rem var(--margen);
+  background: var(--blanco);
+  border-bottom: 1px solid var(--linea);
 }
 
 .marca {
   font-weight: 700;
-  font-stretch: 85%;
   font-size: var(--t-2);
-  letter-spacing: -0.01em;
+  letter-spacing: -0.02em;
   text-decoration: none;
 }
 
 .sitio nav {
   display: flex;
-  gap: clamp(0.9rem, 2.5vw, 2rem);
-  font-size: var(--t-0);
+  gap: clamp(1rem, 2.5vw, 2rem);
 }
 .sitio nav a {
   text-decoration: none;
@@ -145,254 +141,253 @@ figure {
 
 /* ---------- Intro ---------- */
 .intro {
-  padding: clamp(3rem, 12vh, 8rem) var(--margen) clamp(2.5rem, 8vh, 5rem);
-  max-width: 82rem;
+  padding: clamp(3rem, 10vh, 6.5rem) var(--margen) clamp(2.5rem, 7vh, 4.5rem);
 }
 
 .intro h1 {
   font-size: var(--t-display);
-  font-weight: 560;
-  font-stretch: 88%;
-  line-height: 1.02;
+  font-weight: 500;
+  line-height: 1.08;
   letter-spacing: -0.025em;
-  max-width: 17ch;
+  max-width: 20ch;
   text-wrap: balance;
-  animation: abrir 1.1s cubic-bezier(0.2, 0.7, 0.2, 1) both;
-}
-
-@keyframes abrir {
-  from {
-    font-stretch: 75%;
-    opacity: 0;
-  }
-  to {
-    font-stretch: 88%;
-    opacity: 1;
-  }
 }
 
 .quien {
-  margin-top: 1.75rem;
-  max-width: 46ch;
-  color: var(--grafito);
-  transition: color var(--suave);
-}
-.en-universo .quien {
-  color: inherit;
+  margin-top: 1.25rem;
+  max-width: 48ch;
+  font-size: var(--t-2);
+  line-height: 1.4;
+  color: var(--gris);
 }
 
-/* ---------- Proyectos ---------- */
-.proyectos {
-  padding: 0 var(--margen) clamp(4rem, 10vh, 7rem);
-}
-
+/* ---------- Filtros ---------- */
 .proyectos-barra {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  gap: 1rem 2rem;
-  padding-bottom: 1.25rem;
-  border-bottom: 1px solid var(--linea);
-  transition: border-color var(--suave);
+  gap: 0.75rem 2rem;
+  padding: 1rem var(--margen);
+  border-top: 1px solid var(--linea);
 }
 
 .proyectos-barra h2 {
   font-size: var(--t-1);
-  font-weight: 650;
+  font-weight: 600;
   margin-right: auto;
 }
 
-.filtros,
-.vista-selector {
+.filtros {
   display: flex;
   flex-wrap: wrap;
   gap: 0.4rem;
 }
-.filtros[hidden],
-.vista-selector[hidden] {
+.filtros[hidden] {
   display: none;
 }
 
 .filtros button,
-.vista-selector button {
+.serie-botones button {
   font: inherit;
   font-size: var(--t-0);
   color: inherit;
   background: transparent;
   border: 1px solid var(--linea);
   border-radius: 999px;
-  padding: 0.35rem 0.85rem;
-  min-height: 2.25rem;
+  padding: 0.35rem 0.9rem;
+  min-height: 2.5rem;
   cursor: pointer;
-  transition: background-color 0.2s, color 0.2s, border-color 0.2s;
 }
 .filtros button:hover,
-.vista-selector button:hover {
+.serie-botones button:hover {
   border-color: currentColor;
 }
-.filtros button[aria-pressed="true"],
-.vista-selector button[aria-pressed="true"] {
-  background: var(--u-tinta);
-  color: var(--u-fondo);
-  border-color: var(--u-tinta);
+.filtros button[aria-pressed="true"] {
+  background: var(--negro);
+  color: var(--blanco);
+  border-color: var(--negro);
 }
 .filtros .n {
-  opacity: 0.65;
+  opacity: 0.6;
   font-variant-numeric: tabular-nums;
 }
 
-.vista-selector {
-  padding-left: 1rem;
-  border-left: 1px solid var(--linea);
+/* ---------- Bandas ---------- */
+.banda {
+  padding: clamp(2.5rem, 7vh, 4.5rem) var(--margen);
+  border-top: 1px solid var(--linea);
 }
-
-.indice {
-  list-style: none;
-  padding: 0;
-}
-
-.proyecto[hidden] {
+.banda[hidden] {
   display: none;
 }
 
-/* Lista */
-.indice[data-vista="lista"] .proyecto a {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(14rem, 22rem);
-  grid-template-areas:
-    "nombre resumen"
-    "nombre meta";
-  column-gap: 2rem;
-  align-items: end;
-  padding: clamp(1rem, 2.4vw, 1.6rem) 0;
-  border-bottom: 1px solid var(--linea);
-  text-decoration: none;
-  transition: border-color var(--suave);
-}
-
-.indice[data-vista="lista"] .miniatura {
-  display: none;
-}
-
-.nombre {
-  grid-area: nombre;
-  font-size: var(--t-nombre);
-  font-weight: 600;
-  font-stretch: 75%;
-  line-height: 0.95;
-  letter-spacing: -0.02em;
-  transition: font-stretch 0.5s cubic-bezier(0.2, 0.7, 0.2, 1);
-}
-
-/* Muestra del color del universo de cada proyecto */
-.nombre::before {
-  content: "";
-  display: inline-block;
-  width: 0.32em;
-  height: 0.32em;
-  margin-right: 0.28em;
-  vertical-align: 0.18em;
-  border-radius: 50%;
+.banda.destacada {
   background: var(--fondo);
-  box-shadow: 0 0 0 1.5px var(--tinta-borde, transparent);
+  color: var(--tinta);
+  border-top: 0;
 }
 
-.resumen {
+.banda-texto {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  grid-template-areas:
+    "titulo conteo"
+    "resumen conteo";
+  column-gap: 2rem;
+  margin-bottom: clamp(1.75rem, 4vh, 2.5rem);
+}
+
+.banda h3 {
+  grid-area: titulo;
+  font-size: var(--t-3);
+  font-weight: 500;
+  line-height: 1.08;
+  letter-spacing: -0.025em;
+  text-wrap: balance;
+}
+.banda h3 a {
+  text-decoration: none;
+}
+.banda h3 a:hover {
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+}
+
+.banda .resumen {
   grid-area: resumen;
-  font-size: var(--t-0);
-  line-height: 1.4;
+  margin-top: 0.75rem;
+  max-width: var(--ancho-texto);
 }
 
-.disc,
-.anio {
-  font-size: var(--t-0);
-  color: var(--grafito);
-  transition: color var(--suave);
-}
-.en-universo .disc,
-.en-universo .anio {
-  color: inherit;
-  opacity: 0.8;
-}
-
-.indice[data-vista="lista"] .disc {
-  grid-area: meta;
-  margin-top: 0.35rem;
-}
-.indice[data-vista="lista"] .anio {
-  grid-area: meta;
-  justify-self: end;
-  margin-top: 0.35rem;
+.conteo {
+  grid-area: conteo;
   font-variant-numeric: tabular-nums;
 }
 
-/* Entrar al universo: el nombre se expande */
-.proyecto a:focus-visible .nombre,
-.proyecto.activo .nombre {
-  font-stretch: 100%;
+/* La serie: fila horizontal que sale por el borde derecho de la pantalla */
+.serie {
+  margin-inline: calc(-1 * var(--margen));
+  padding-inline: var(--margen);
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  scroll-snap-type: x proximity;
+  scroll-padding-inline: var(--margen);
+  scrollbar-width: thin;
+  scrollbar-color: color-mix(in srgb, currentColor 30%, transparent) transparent;
 }
 
-.en-universo .proyectos-barra,
-.en-universo .indice[data-vista="lista"] .proyecto a {
-  border-color: color-mix(in srgb, var(--u-tinta) 30%, transparent);
-}
-.en-universo .proyecto:not(.activo) .nombre::before {
-  box-shadow: 0 0 0 1.5px color-mix(in srgb, var(--u-tinta) 40%, transparent);
-}
-.en-universo .filtros button,
-.en-universo .vista-selector button,
-.en-universo .vista-selector {
-  border-color: color-mix(in srgb, var(--u-tinta) 35%, transparent);
+.serie ul {
+  display: flex;
+  gap: clamp(0.75rem, 1.4vw, 1.25rem);
+  list-style: none;
+  padding: 0 0 1rem;
+  width: max-content;
 }
 
-/* Grilla */
-.indice[data-vista="grilla"] {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(min(100%, 18rem), 1fr));
-  gap: 2.5rem 1.5rem;
-  padding-top: 2rem;
+.serie li {
+  scroll-snap-align: start;
 }
 
-.indice[data-vista="grilla"] .proyecto a {
+.pieza {
   display: flex;
   flex-direction: column;
-  gap: 0.35rem;
-  text-decoration: none;
+  gap: 0.6rem;
 }
 
-.miniatura {
+.pieza figcaption {
+  order: -1;
+  font-size: var(--t-0);
+  color: var(--gris);
+}
+.destacada .pieza figcaption {
+  color: inherit;
+  opacity: 0.85;
+}
+
+.pieza-img {
   display: grid;
   place-items: center;
-  aspect-ratio: 4 / 3;
-  margin-bottom: 0.6rem;
+  height: var(--alto-pieza);
   padding: 1rem;
   background: var(--fondo);
   color: var(--tinta);
   font-size: var(--t-0);
   text-align: center;
-  border-radius: 4px;
-  overflow: hidden;
 }
-.miniatura span {
-  opacity: 0.75;
+.pieza-img span {
+  opacity: 0.7;
+}
+.vertical .pieza-img {
+  aspect-ratio: 2 / 3;
+}
+.cuadrada .pieza-img {
+  aspect-ratio: 1;
+}
+.ancha .pieza-img {
+  aspect-ratio: 16 / 10;
 }
 
-.indice[data-vista="grilla"] .nombre {
-  font-size: var(--t-2);
-  font-stretch: 85%;
-  line-height: 1.1;
+/* En la banda destacada las piezas se separan del fondo con un tono propio */
+.destacada .pieza-img {
+  background: color-mix(in srgb, var(--tinta) 14%, var(--fondo));
 }
-.indice[data-vista="grilla"] .nombre::before {
+
+.banda-pie {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.75rem 1.5rem;
+  margin-top: 1rem;
+}
+
+.etiquetas {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  list-style: none;
+  padding: 0;
+  margin-right: auto;
+  font-size: var(--t-0);
+}
+.etiquetas li {
+  background: var(--etiqueta);
+  padding: 0.2rem 0.6rem;
+  border-radius: 3px;
+}
+.etiquetas li.anio {
+  background: transparent;
+  color: var(--gris);
+  padding-inline: 0.3rem;
+}
+.destacada .etiquetas li {
+  background: color-mix(in srgb, var(--tinta) 16%, transparent);
+}
+.destacada .etiquetas li.anio {
+  background: transparent;
+  color: inherit;
+}
+
+.serie-botones {
+  display: flex;
+  gap: 0.4rem;
+}
+.serie-botones[hidden] {
   display: none;
 }
-
-
-.sin-resultados {
-  padding: 2rem 0;
-  color: var(--grafito);
+.destacada .serie-botones button {
+  border-color: color-mix(in srgb, var(--tinta) 40%, transparent);
 }
 
-/* ---------- Sobre mí ---------- */
+.ver {
+  font-weight: 600;
+}
+
+.sin-resultados {
+  padding: 2rem var(--margen);
+  color: var(--gris);
+}
+
+/* ---------- Sobre mí y contacto ---------- */
 .sobre,
 .contacto {
   padding: clamp(3rem, 9vh, 6rem) var(--margen);
@@ -400,13 +395,12 @@ figure {
   display: grid;
   grid-template-columns: minmax(10rem, 1fr) minmax(0, 2.4fr);
   gap: 1.5rem 3rem;
-  transition: border-color var(--suave);
 }
 
 .sobre h2,
 .contacto h2 {
   font-size: var(--t-1);
-  font-weight: 650;
+  font-weight: 600;
 }
 
 .sobre-texto {
@@ -414,8 +408,7 @@ figure {
   gap: 1.1rem;
   max-width: var(--ancho-texto);
   font-size: var(--t-2);
-  line-height: 1.35;
-  font-weight: 380;
+  line-height: 1.4;
 }
 
 .herramientas {
@@ -427,21 +420,19 @@ figure {
   font-size: var(--t-0);
 }
 .herramientas dt {
-  font-weight: 650;
+  font-weight: 600;
   margin-bottom: 0.2rem;
 }
 .herramientas dd {
-  color: var(--grafito);
+  color: var(--gris);
 }
 
-/* ---------- Contacto ---------- */
 .contacto-frase {
   font-size: var(--t-display);
-  font-weight: 560;
-  font-stretch: 88%;
-  line-height: 1.02;
+  font-weight: 500;
+  line-height: 1.08;
   letter-spacing: -0.025em;
-  max-width: 14ch;
+  max-width: 16ch;
   text-wrap: balance;
 }
 
@@ -455,68 +446,55 @@ figure {
   font-size: var(--t-2);
 }
 
-/* ---------- Pie ---------- */
 .pie {
   padding: 2rem var(--margen) 2.5rem;
   font-size: var(--t-0);
-  color: var(--grafito);
+  color: var(--gris);
   border-top: 1px solid var(--linea);
 }
 
 /* ---------- Página de proyecto ---------- */
-.caso {
-  --u-fondo: var(--papel);
-  --u-tinta: var(--negro);
-}
-
-.caso .sitio {
-  background: var(--fondo);
-  color: var(--tinta);
-}
-
 .caso-cabecera {
-  background: var(--fondo);
-  color: var(--tinta);
-  padding: clamp(3rem, 14vh, 9rem) var(--margen) clamp(2.5rem, 6vh, 4rem);
+  padding: clamp(3rem, 12vh, 7rem) var(--margen) clamp(2rem, 5vh, 3rem);
 }
 
 .caso-cabecera h1 {
-  font-size: clamp(2.75rem, 9vw, 8.5rem);
-  font-weight: 620;
-  font-stretch: 100%;
-  line-height: 0.92;
+  font-size: clamp(2.5rem, 7vw, 6rem);
+  font-weight: 500;
+  line-height: 1;
   letter-spacing: -0.03em;
-  max-width: 14ch;
+  max-width: 16ch;
   text-wrap: balance;
 }
 
 .caso-resumen {
-  margin-top: 1.5rem;
-  max-width: 40ch;
+  margin-top: 1.25rem;
+  max-width: 44ch;
   font-size: var(--t-2);
-  line-height: 1.3;
+  line-height: 1.4;
+  color: var(--gris);
 }
 
 .ficha {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(min(100%, 13rem), 1fr));
   gap: 1.25rem 2rem;
-  padding: 1.75rem var(--margen);
-  border-bottom: 1px solid var(--linea);
+  padding: 1.5rem var(--margen);
+  border-block: 1px solid var(--linea);
   font-size: var(--t-0);
 }
 .ficha dt {
-  color: var(--grafito);
+  color: var(--gris);
   margin-bottom: 0.15rem;
 }
 .ficha dd {
-  font-weight: 550;
+  font-weight: 600;
 }
 
 .caso-cuerpo {
   display: grid;
   gap: clamp(2.5rem, 6vh, 4rem);
-  padding: clamp(3rem, 9vh, 6rem) var(--margen);
+  padding: clamp(3rem, 9vh, 5rem) var(--margen);
 }
 
 .bloque {
@@ -526,14 +504,13 @@ figure {
 }
 .bloque h2 {
   font-size: var(--t-1);
-  font-weight: 650;
+  font-weight: 600;
 }
 .bloque p,
 .bloque ul {
   max-width: var(--ancho-texto);
   font-size: var(--t-2);
-  line-height: 1.38;
-  font-weight: 380;
+  line-height: 1.4;
 }
 .bloque ul {
   padding-left: 1.1em;
@@ -551,8 +528,7 @@ figure {
 .cifra {
   display: block;
   font-size: var(--t-display);
-  font-weight: 600;
-  font-stretch: 80%;
+  font-weight: 500;
   line-height: 1;
   letter-spacing: -0.02em;
   font-variant-numeric: tabular-nums;
@@ -565,15 +541,14 @@ figure {
 .cifra-texto {
   display: block;
   margin-top: 0.4rem;
-  font-size: var(--t-1);
-  color: var(--grafito);
+  color: var(--gris);
 }
 
 .galeria {
   display: grid;
   grid-template-columns: repeat(12, minmax(0, 1fr));
   gap: clamp(0.75rem, 1.6vw, 1.5rem);
-  padding: 0 var(--margen) clamp(4rem, 10vh, 7rem);
+  padding: 0 var(--margen) clamp(4rem, 10vh, 6rem);
 }
 
 .placeholder {
@@ -584,9 +559,6 @@ figure {
   color: var(--tinta);
   font-size: var(--t-0);
   text-align: center;
-  border-radius: 4px;
-  outline: 1px dashed color-mix(in srgb, var(--tinta) 45%, transparent);
-  outline-offset: -0.9rem;
 }
 .placeholder.ancha {
   grid-column: span 12;
@@ -603,54 +575,37 @@ figure {
 
 .siguiente a {
   display: block;
-  padding: clamp(3rem, 10vh, 6rem) var(--margen);
-  background: var(--fondo);
-  color: var(--tinta);
+  padding: clamp(3rem, 9vh, 5rem) var(--margen);
+  border-top: 1px solid var(--linea);
   text-decoration: none;
 }
 .siguiente-label {
   display: block;
   font-size: var(--t-0);
-  margin-bottom: 0.75rem;
+  color: var(--gris);
+  margin-bottom: 0.5rem;
 }
 .siguiente-nombre {
   display: block;
-  font-size: var(--t-nombre);
-  font-weight: 600;
-  font-stretch: 75%;
-  line-height: 0.95;
-  letter-spacing: -0.02em;
-  transition: font-stretch 0.5s cubic-bezier(0.2, 0.7, 0.2, 1);
+  font-size: var(--t-display);
+  font-weight: 500;
+  line-height: 1.05;
+  letter-spacing: -0.025em;
 }
-.siguiente a:hover .siguiente-nombre,
-.siguiente a:focus-visible .siguiente-nombre {
-  font-stretch: 100%;
+.siguiente a:hover .siguiente-nombre {
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 0.12em;
 }
 
 /* ---------- Pantallas chicas ---------- */
 @media (max-width: 48rem) {
   .sitio {
+    position: static;
     flex-wrap: wrap;
   }
-  .indice[data-vista="lista"] .proyecto a {
-    grid-template-columns: 1fr auto;
-    grid-template-areas:
-      "nombre nombre"
-      "resumen resumen"
-      "disc anio";
-    row-gap: 0.4rem;
-  }
-  .indice[data-vista="lista"] .disc {
-    grid-area: disc;
-    margin-top: 0;
-  }
-  .indice[data-vista="lista"] .anio {
-    grid-area: anio;
-    margin-top: 0;
-  }
-  .vista-selector {
-    padding-left: 0;
-    border-left: 0;
+  .sitio nav {
+    font-size: var(--t-0);
   }
   .sobre,
   .contacto,
@@ -665,20 +620,22 @@ figure {
   .placeholder.vertical {
     grid-column: span 12;
   }
+  .serie-botones {
+    display: none !important;
+  }
 }
 
-/* ---------- Menos movimiento ---------- */
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
   }
-  *,
-  *::before,
-  *::after {
-    animation: none !important;
-    transition: none !important;
-  }
   @view-transition {
     navigation: none;
   }
+}
+
+.serie-botones button:disabled {
+  opacity: 0.35;
+  cursor: default;
+  border-color: var(--linea);
 }

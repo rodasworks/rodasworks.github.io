@@ -36,10 +36,13 @@ export const proyectos = [
       { cifra: "pendiente", texto: "correos enviados al mes" },
     ],
     imagenes: [
-      { texto: "Key visual de una campaña", formato: "ancha" },
-      { texto: "Anuncio para Meta (vertical)", formato: "vertical" },
+      { texto: "Black Friday", formato: "vertical" },
+      { texto: "Cyber", formato: "vertical" },
+      { texto: "Días TOP", formato: "cuadrada" },
+      { texto: "Colección Fútbol", formato: "vertical" },
+      { texto: "Anuncio para Meta", formato: "vertical" },
       { texto: "Correo de Klaviyo", formato: "vertical" },
-      { texto: "Grilla de Instagram", formato: "ancha" },
+      { texto: "Grilla de Instagram", formato: "cuadrada" },
     ],
   },
   {

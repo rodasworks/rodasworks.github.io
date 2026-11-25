@@ -257,7 +257,7 @@ ${cabeceraSitio("/")}
 <main id="contenido" class="error-404">
   <p class="error-codigo">404</p>
   <h1>Chuta, esta página no existe.</h1>
-  <p>Esta página no existe, pero no es culpa de nadie (bueno, quizás un poco mía). Mejor volvamos al inicio.</p>
+  <p>No es culpa de nadie (bueno, quizás un poco mía). Mejor volvamos al inicio.</p>
   <p><a class="boton" href="/">Volver al inicio</a></p>
 </main>
 ${pie}

@@ -150,8 +150,9 @@ ${cabeceraSitio("./")}
       <img src="./assets/img/rodasworks-logo.png" alt="Logo de Rodas Works: las letras RW en bloques, sobre el nombre Rodas Works." width="720" height="478" loading="lazy">
       <div class="sobre-texto">
         <p class="dato-pregunta">¿Te diste cuenta?</p>
-        <p>Mi nombre completo es Patricio Hogmin Rodas Weng. Sí, PHRW. El logo dice RW por Rodas Works, pero los cortes del dibujo esconden tres letras: una P, una R y una W.</p>
-        <p>Si ya las viste todas, ahora no vas a poder dejar de verlas.</p>
+        <p>Mi nombre completo es Patricio Hogmin Rodas Weng. El logo dice RW por Rodas Weng, mis apellidos, y de paso funciona para Rodas Works, que son mis trabajos.</p>
+        <p>Pero hay más: los cortes del dibujo esconden tres de mis iniciales. Una P, una R y una W.</p>
+        <p>Si ya las viste, ahora no vas a poder dejar de verlas.</p>
       </div>
     </div>
     </div>

@@ -1092,3 +1092,13 @@ a:hover {
 .tarjeta-img {
   align-self: flex-start;
 }
+
+/* Logo de Dato curioso al 60 % del tamaño anterior */
+.marca-historia-cuerpo {
+  grid-template-columns: minmax(0, 12rem) minmax(0, 1fr);
+}
+@media (max-width: 48rem) {
+  .marca-historia-cuerpo img {
+    max-width: 9.5rem;
+  }
+}

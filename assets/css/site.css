@@ -716,7 +716,11 @@ figure {
 a:hover {
   text-decoration-color: var(--azul);
 }
-.saltos a:hover,
+.saltos a:hover {
+  border-color: var(--azul);
+  background: var(--azul);
+  color: #ffffff;
+}
 .serie-botones button:hover:not(:disabled) {
   border-color: var(--azul);
   color: var(--azul);
@@ -745,20 +749,50 @@ a:hover {
 }
 
 /* ---------- Las tres palabras del titular ---------- */
-.t-pantalla {
+.t-palabra {
+  display: inline-block;
+}
+.junto {
+  white-space: nowrap;
+}
+.portada .intro h1 {
+  max-width: 22ch;
+}
+.t-pantalla.especial {
   font-family: "Pixelify Sans", ui-monospace, monospace;
   font-weight: 400;
   font-size: 0.95em;
 }
-.t-papel {
+.t-papel.especial {
   font-family: "Caveat", "Segoe Print", cursive;
   font-weight: 500;
   font-size: 1.25em;
   line-height: 0.8;
   margin-right: 0.08em;
 }
-.t-movimiento {
+.t-movimiento.especial {
   font-style: italic;
+}
+
+/* Efecto dominó: cada palabra se voltea, cambia de tipografía a mitad de giro y vuelve */
+.t-palabra.volteando {
+  animation: voltear 0.5s cubic-bezier(0.45, 0, 0.55, 1);
+}
+@keyframes voltear {
+  0% {
+    transform: perspective(400px) rotateX(0deg);
+  }
+  50% {
+    transform: perspective(400px) rotateX(90deg);
+  }
+  100% {
+    transform: perspective(400px) rotateX(0deg);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .t-palabra.volteando {
+    animation: none;
+  }
 }
 
 /* ---------- Marca: versión oscura o blanca según el fondo ---------- */
@@ -857,10 +891,11 @@ a:hover {
   color: #ffffff;
   border-color: rgba(255, 255, 255, 0.45);
 }
-.portada .saltos a:hover {
+.portada .saltos a:hover,
+.portada .saltos a:focus-visible {
   color: #ffffff;
-  border-color: var(--azul-claro);
-  background: rgba(47, 73, 224, 0.35);
+  border-color: var(--azul);
+  background: var(--azul);
 }
 .portada .saltos .n {
   opacity: 0.75;

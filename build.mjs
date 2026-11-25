@@ -105,7 +105,7 @@ ${cabeceraSitio("./")}
 <main id="contenido">
   <div class="portada">
   <section class="intro" aria-labelledby="intro-titulo">
-    <h1 id="intro-titulo">Diseño identidades y las llevo a la <span class="t-pantalla">pantalla</span>, al <span class="t-papel">papel</span> y al <span class="t-movimiento">movimiento</span>.</h1>
+    <h1 id="intro-titulo">Diseño identidades y las llevo a la <span class="junto"><span class="t-palabra t-pantalla especial">pantalla</span>,</span> al <span class="t-palabra t-papel especial">papel</span> y al <span class="junto"><span class="t-palabra t-movimiento especial">movimiento</span>.</span></h1>
     <p class="quien">¡Hola! Soy Patricio Rodas, un diseñador gráfico de Santiago de Chile.</p>
   </section>
   ${saltos}

@@ -7,7 +7,7 @@ export const categorias = [
   { slug: "audiovisual", nombre: "Audiovisual", descripcion: "Comerciales y animación." },
   { slug: "branding", nombre: "Branding", descripcion: "Identidades y manuales de marca." },
   { slug: "editorial", nombre: "Editorial", descripcion: "Diseño y diagramación de libros." },
-  { slug: "aprender-jugando", nombre: "Aprender jugando", descripcion: "Juegos creados con IA para repasar lo visto en clases de una forma más liviana." },
+  { slug: "apoyo-escolar", nombre: "Apoyo escolar", descripcion: "Juegos creados con IA para repasar lo visto en clases de una forma más liviana." },
 ];
 
 export const proyectos = [
@@ -206,7 +206,7 @@ export const proyectos = [
   },
   {
     slug: "juego-de-las-puertas",
-    categoria: "aprender-jugando",
+    categoria: "apoyo-escolar",
     nombre: "El juego de las puertas",
     resumen: "Juego educativo para repasar historia de Chile.",
     anio: "2026",

@@ -39,6 +39,42 @@
     actualizarCabecera();
   }
 
+  // ---------- Titular: las tres palabras alternan tipografía en efecto dominó ----------
+  const palabras = [...document.querySelectorAll(".t-palabra")];
+  if (palabras.length && !menosMovimiento.matches) {
+    const PASO = 250; // separación entre una palabra y la siguiente
+    const espera = (ms) => new Promise((r) => setTimeout(r, ms));
+    let visible = true;
+    const intro = document.querySelector(".intro");
+    if (intro && "IntersectionObserver" in window) {
+      new IntersectionObserver(([e]) => (visible = e.isIntersecting)).observe(intro);
+    }
+    const domino = async (especial) => {
+      for (const p of palabras) {
+        p.classList.remove("volteando");
+        void p.offsetWidth; // reinicia la animación
+        p.classList.add("volteando");
+        setTimeout(() => p.classList.toggle("especial", especial), 250); // cambia a mitad del giro
+        await espera(PASO);
+      }
+      await espera(500);
+      palabras.forEach((p) => p.classList.remove("volteando"));
+    };
+    // Reposo en la tipografía original 3 s, dominó a las especiales, 2 s así y dominó de vuelta.
+    // (Sin animación, por ejemplo con "reducir movimiento", quedan fijas las especiales.)
+    palabras.forEach((p) => p.classList.remove("especial"));
+    const ciclo = async () => {
+      for (;;) {
+        await espera(3000);
+        if (!visible || document.hidden) continue;
+        await domino(true);
+        await espera(2000);
+        await domino(false);
+      }
+    };
+    ciclo();
+  }
+
   // ---------- Series ----------
   bandas.forEach((banda) => {
     const serie = banda.querySelector(".serie");

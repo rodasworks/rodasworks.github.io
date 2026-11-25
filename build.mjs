@@ -149,7 +149,7 @@ ${cabeceraSitio("./")}
     <div class="marca-historia-cuerpo">
       <img src="./assets/img/rodasworks-logo.png" alt="Logo de Rodas Works: las letras RW en bloques, sobre el nombre Rodas Works." width="720" height="478" loading="lazy">
       <div class="sobre-texto">
-        <p class="dato-pregunta">¿Encontraste la P?</p>
+        <p class="dato-pregunta">¿Te diste cuenta?</p>
         <p>Mi nombre completo es Patricio Hogmin Rodas Weng. Sí, PHRW. El logo dice RW por Rodas Works, pero los cortes del dibujo esconden tres letras: una P, una R y una W.</p>
         <p>Si ya las viste todas, ahora no vas a poder dejar de verlas.</p>
       </div>

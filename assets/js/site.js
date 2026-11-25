@@ -78,29 +78,43 @@
     ciclo();
   }
 
-  // ---------- Series ----------
+  // ---------- Series: puntitos que muestran qué proyecto se está viendo ----------
   bandas.forEach((banda) => {
     const serie = banda.querySelector(".serie");
-    const botones = banda.querySelector(".serie-botones");
-    if (!serie || !botones) return;
+    const puntos = banda.querySelector(".puntos");
+    if (!serie || !puntos) return;
+    const items = [...serie.querySelectorAll("li")];
 
-    const [anterior, siguiente] = botones.querySelectorAll("button");
+    const botones = items.map((li, i) => {
+      const b = document.createElement("button");
+      b.type = "button";
+      const nombre = li.querySelector(".tarjeta-nombre")?.textContent ?? `Proyecto ${i + 1}`;
+      b.setAttribute("aria-label", `Ver ${nombre}`);
+      b.addEventListener("click", () => {
+        serie.scrollTo({
+          left: li.offsetLeft - items[0].offsetLeft,
+          behavior: menosMovimiento.matches ? "auto" : "smooth",
+        });
+      });
+      puntos.appendChild(b);
+      return b;
+    });
 
     const actualizar = () => {
       const max = serie.scrollWidth - serie.clientWidth;
-      botones.hidden = max <= 4;
-      anterior.disabled = serie.scrollLeft <= 4;
-      siguiente.disabled = serie.scrollLeft >= max - 4;
+      puntos.hidden = max <= 4;
+      // El activo es el proyecto más cercano al borde izquierdo; al llegar al final, el último.
+      let activo = 0;
+      if (serie.scrollLeft >= max - 4) activo = items.length - 1;
+      else {
+        let menor = Infinity;
+        items.forEach((li, i) => {
+          const d = Math.abs(li.offsetLeft - items[0].offsetLeft - serie.scrollLeft);
+          if (d < menor) (menor = d), (activo = i);
+        });
+      }
+      botones.forEach((b, i) => b.setAttribute("aria-current", String(i === activo)));
     };
-
-    botones.addEventListener("click", (e) => {
-      const boton = e.target.closest("button[data-dir]");
-      if (!boton) return;
-      serie.scrollBy({
-        left: Number(boton.dataset.dir) * serie.clientWidth * 0.8,
-        behavior: menosMovimiento.matches ? "auto" : "smooth",
-      });
-    });
 
     serie.addEventListener("scroll", actualizar, { passive: true });
     new ResizeObserver(actualizar).observe(serie);

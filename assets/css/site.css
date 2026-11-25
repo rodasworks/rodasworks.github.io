@@ -968,3 +968,70 @@ a:hover {
   color: #ffffff;
   background: rgba(255, 255, 255, 0.12);
 }
+
+/* ---------- Sin subrayado en los nombres de proyecto ---------- */
+.tarjeta:hover .tarjeta-nombre,
+.siguiente a:hover .siguiente-nombre {
+  text-decoration: none;
+}
+
+/* ---------- Series sin barra de desplazamiento, con puntitos ---------- */
+.serie {
+  scrollbar-width: none;
+}
+.serie::-webkit-scrollbar {
+  display: none;
+}
+.serie ul {
+  padding-bottom: 0.5rem;
+}
+.banda-pie {
+  justify-content: center;
+  margin-top: 1.25rem;
+}
+.puntos {
+  display: flex;
+  gap: 0.25rem;
+}
+.puntos[hidden] {
+  display: none;
+}
+.puntos button {
+  width: 1.75rem;
+  height: 1.75rem;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+}
+.puntos button::before {
+  content: "";
+  width: 0.55rem;
+  height: 0.55rem;
+  border-radius: 50%;
+  background: #b4b4b4;
+  transition: background-color 0.25s, transform 0.25s;
+}
+.puntos button:hover::before {
+  background: var(--gris);
+}
+.puntos button[aria-current="true"]::before {
+  background: var(--negro);
+  transform: scale(1.2);
+}
+.destacada .puntos button::before {
+  background: rgba(255, 255, 255, 0.45);
+}
+.destacada .puntos button:hover::before {
+  background: rgba(255, 255, 255, 0.75);
+}
+.destacada .puntos button[aria-current="true"]::before {
+  background: #ffffff;
+}
+@media (max-width: 48rem) {
+  .banda-pie {
+    display: flex !important;
+  }
+}

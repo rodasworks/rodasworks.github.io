@@ -99,10 +99,7 @@ const banda = (c, i) => {
       </ul>
     </div>
     <div class="banda-pie">
-      <div class="serie-botones" hidden>
-        <button type="button" data-dir="-1">Anterior</button>
-        <button type="button" data-dir="1">Siguiente</button>
-      </div>
+      <div class="puntos" role="group" aria-label="Proyectos de ${esc(c.nombre)}: elegir cuál ver" hidden></div>
     </div>
   </section>`;
 };

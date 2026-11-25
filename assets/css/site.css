@@ -1383,3 +1383,62 @@ a:hover {
 .serie:has(.libro) ul {
   gap: clamp(1.5rem, 2.8vw, 2.5rem);
 }
+
+/* ---------- Hovers con fundido: el color entra y sale suave ---------- */
+.tarjeta-nombre,
+.sitio nav a,
+.contacto-links a,
+.caso-categoria a,
+.siguiente-nombre,
+.conteo {
+  transition: color 0.35s ease, text-decoration-color 0.35s ease;
+}
+.saltos a {
+  transition: background-color 0.35s ease, border-color 0.35s ease, color 0.35s ease;
+}
+.boton {
+  transition: background-color 0.35s ease;
+}
+
+/* ---------- Botón de descarga: al pasar el mouse, el texto se va y aparece el ícono ---------- */
+.boton-descarga {
+  position: relative;
+  justify-content: center;
+}
+.boton-texto {
+  transition: opacity 0.3s ease;
+}
+.boton-icono {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 1.4rem;
+  height: 1.4rem;
+  margin: -0.7rem 0 0 -0.7rem;
+  opacity: 0;
+  transform: translateY(-4px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+.boton-descarga:hover .boton-texto,
+.boton-descarga:focus-visible .boton-texto {
+  opacity: 0;
+}
+.boton-descarga:hover .boton-icono,
+.boton-descarga:focus-visible .boton-icono {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ---------- Editorial en blanco y con el doble de espacio entre libros ---------- */
+#editorial {
+  background: #ffffff;
+}
+.serie:has(.libro) ul {
+  gap: clamp(3rem, 5.6vw, 5rem);
+}
+@media (prefers-reduced-motion: reduce) {
+  .boton-texto,
+  .boton-icono {
+    transition: none;
+  }
+}

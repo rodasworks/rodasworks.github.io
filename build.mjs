@@ -1,7 +1,7 @@
 // Genera index.html y las páginas de cada proyecto a partir de contenido/proyectos.mjs.
 // Uso: node build.mjs
 import { writeFileSync, mkdirSync, rmSync, existsSync } from "node:fs";
-import { disciplinas, proyectos } from "./contenido/proyectos.mjs";
+import { categorias, proyectos } from "./contenido/proyectos.mjs";
 
 const esc = (s) =>
   String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
@@ -15,11 +15,11 @@ const txt = (s) => {
   }
   return esc(v);
 };
+const plano = (s) => (/^pendiente/i.test(String(s)) ? "" : String(s));
 
-const slugDisc = (d) =>
-  d.normalize("NFD").replace(/[̀-ͯ]/g, "").toLowerCase().replace(/[^a-z0-9]+/g, "-");
+const nombreCategoria = (slug) => categorias.find((c) => c.slug === slug)?.nombre ?? slug;
 
-const head = ({ titulo, descripcion, raiz, extraStyle = "" }) => `<!doctype html>
+const head = ({ titulo, descripcion, raiz }) => `<!doctype html>
 <html lang="es-CL">
 <head>
 <meta charset="utf-8">
@@ -27,14 +27,14 @@ const head = ({ titulo, descripcion, raiz, extraStyle = "" }) => `<!doctype html
 <title>${esc(titulo)}</title>
 <meta name="description" content="${esc(descripcion)}">
 <meta name="color-scheme" content="light">
+<link rel="icon" href="${raiz}favicon.png" type="image/png">
 <link rel="stylesheet" href="${raiz}assets/css/site.css">
-${extraStyle}
 <script src="${raiz}assets/js/site.js" defer></script>
 </head>`;
 
-const cabeceraSitio = (raiz, actual) => `<a class="saltar" href="#contenido">Ir al contenido</a>
+const cabeceraSitio = (raiz) => `<a class="saltar" href="#contenido">Ir al contenido</a>
 <header class="sitio">
-  <a class="marca" href="${raiz}" ${actual === "inicio" ? 'aria-current="page"' : ""}>Rodas Works</a>
+  <a class="marca" href="${raiz}"><img src="${raiz}assets/img/rodasworks-wordmark.png" alt="Rodas Works" width="640" height="92"></a>
   <nav aria-label="Principal">
     <a href="${raiz}#proyectos">Proyectos</a>
     <a href="${raiz}#sobre-mi">Sobre mí</a>
@@ -48,76 +48,65 @@ const pie = `<footer class="pie">
 
 const universo = (p) => `--fondo:${p.fondo};--tinta:${p.tinta}`;
 
-// ---------- Índice ----------
-const conteo = Object.fromEntries(
-  disciplinas.map((d) => [d, proyectos.filter((p) => p.disciplinas.includes(d)).length])
-);
+// ---------- Inicio ----------
+const conProyectos = categorias
+  .map((c) => ({ ...c, lista: proyectos.filter((p) => p.categoria === c.slug) }))
+  .filter((c) => c.lista.length);
 
-const filtros = `<div class="filtros" role="group" aria-label="Filtrar proyectos por disciplina" hidden>
-  <button type="button" data-filtro="todo" aria-pressed="true">Todo <span class="n">${proyectos.length}</span></button>
-  ${disciplinas
-    .filter((d) => conteo[d] > 0)
+const saltos = `<nav class="saltos" aria-label="Categorías">
+  ${conProyectos.map((c) => `<a href="#${c.slug}">${esc(c.nombre)} <span class="n">${c.lista.length}</span></a>`).join("\n  ")}
+</nav>`;
+
+const banda = (c, i) => {
+  const tarjetas = c.lista
     .map(
-      (d) =>
-        `<button type="button" data-filtro="${slugDisc(d)}" aria-pressed="false">${esc(d)} <span class="n">${conteo[d]}</span></button>`
+      (p) => `<li>
+          <a class="tarjeta ${p.imagenes[0]?.formato ?? "ancha"}" href="proyectos/${p.slug}/" style="${universo(p)}">
+            <span class="tarjeta-anio">${plano(p.anio) ? esc(p.anio) : "&nbsp;"}</span>
+            <span class="tarjeta-img" aria-hidden="true"><span>Imagen pendiente</span></span>
+            <span class="tarjeta-nombre" style="view-transition-name:t-${p.slug}">${esc(p.nombre)}</span>
+            <span class="tarjeta-resumen">${plano(p.resumen) ? esc(p.resumen) : `Cliente: ${esc(plano(p.cliente) || "por completar")}`}</span>
+          </a>
+        </li>`
     )
-    .join("\n  ")}
-</div>`;
-
-const bandas = proyectos
-  .map((p, i) => {
-    const piezas = p.imagenes
-      .map(
-        (img) => `<li><figure class="pieza ${img.formato}">
-          <div class="pieza-img"><span>Imagen pendiente</span></div>
-          <figcaption>${esc(img.texto)}</figcaption>
-        </figure></li>`
-      )
-      .join("\n        ");
-    return `<section class="banda${i === 0 ? " destacada" : ""}" data-disciplinas="${p.disciplinas.map(slugDisc).join(" ")}" style="${universo(p)}" aria-labelledby="b-${p.slug}">
+    .join("\n        ");
+  return `<section class="banda${i === 0 ? " destacada" : ""}" id="${c.slug}" aria-labelledby="b-${c.slug}">
     <div class="banda-texto">
-      <h3 id="b-${p.slug}"><a href="proyectos/${p.slug}/" style="view-transition-name:t-${p.slug}">${esc(p.nombre)}</a></h3>
-      <p class="resumen">${esc(p.resumen)}</p>
-      <p class="conteo" aria-label="${p.imagenes.length} piezas">(${p.imagenes.length})</p>
+      <h2 id="b-${c.slug}">${esc(c.nombre)}</h2>
+      <p class="resumen">${esc(c.descripcion)}</p>
+      <p class="conteo" aria-label="${c.lista.length} proyectos">(${c.lista.length})</p>
     </div>
-    <div class="serie" role="region" aria-label="Piezas de ${esc(p.nombre)}" tabindex="0">
+    <div class="serie" role="region" aria-label="Proyectos de ${esc(c.nombre)}" tabindex="0">
       <ul>
-        ${piezas}
+        ${tarjetas}
       </ul>
     </div>
     <div class="banda-pie">
-      <ul class="etiquetas" aria-label="Disciplinas">${p.disciplinas.map((d) => `<li>${esc(d)}</li>`).join("")}<li class="anio">${txt(p.anio)}</li></ul>
       <div class="serie-botones" hidden>
         <button type="button" data-dir="-1">Anterior</button>
         <button type="button" data-dir="1">Siguiente</button>
       </div>
-      <a class="ver" href="proyectos/${p.slug}/">Ver proyecto</a>
     </div>
   </section>`;
-  })
-  .join("\n  ");
+};
 
 const indice = `${head({
   titulo: "Rodas Works — Patricio Rodas, diseño y marca",
   descripcion:
-    "Portafolio de Patricio Rodas (Rodas Works): identidad de marca, campañas, diseño editorial, animación, contenido con IA y proyectos interactivos.",
+    "Portafolio de Patricio Rodas (Rodas Works): audiovisual, branding, diseño editorial y proyectos interactivos.",
   raiz: "./",
 })}
 <body class="inicio">
-${cabeceraSitio("./", "inicio")}
+${cabeceraSitio("./")}
 <main id="contenido">
   <section class="intro" aria-labelledby="intro-titulo">
-    <h1 id="intro-titulo">Diseño de marca, campañas, libros, animación y contenido con IA.</h1>
-    <p class="quien">Soy Patricio Rodas, diseñador gráfico en Santiago de Chile. Construyo marcas completas: desde el logo hasta el último anuncio.</p>
+    <h1 id="intro-titulo">Diseño de marca, audiovisual, libros y proyectos interactivos.</h1>
+    <p class="quien">Soy Patricio Rodas, diseñador gráfico en Santiago de Chile.</p>
   </section>
 
-  <section id="proyectos" class="proyectos" aria-labelledby="proyectos-titulo">
-    <div class="proyectos-barra">
-      <h2 id="proyectos-titulo">Proyectos</h2>
-      ${filtros}
-    </div>
-  ${bandas}
-    <p class="sin-resultados" hidden>No hay proyectos en esta disciplina todavía.</p>
+  <section id="proyectos" class="proyectos" aria-label="Proyectos">
+    ${saltos}
+  ${conProyectos.map(banda).join("\n  ")}
   </section>
 
   <section id="sobre-mi" class="sobre" aria-labelledby="sobre-titulo">
@@ -173,22 +162,23 @@ const pagina = (p, i) => {
     : "";
   return `${head({
     titulo: `${p.nombre} — Rodas Works`,
-    descripcion: `${p.nombre}: ${p.resumen}`,
+    descripcion: `${p.nombre}. ${plano(p.resumen)}`.trim(),
     raiz,
   })}
 <body class="caso" style="${universo(p)}">
-${cabeceraSitio(raiz, "caso")}
+${cabeceraSitio(raiz)}
 <main id="contenido">
   <header class="caso-cabecera">
+    <p class="caso-categoria"><a href="${raiz}#${p.categoria}">${esc(nombreCategoria(p.categoria))}</a></p>
     <h1 style="view-transition-name:t-${p.slug}">${esc(p.nombre)}</h1>
-    <p class="caso-resumen">${esc(p.resumen)}</p>
+    <p class="caso-resumen">${txt(p.resumen)}</p>
   </header>
 
   <dl class="ficha">
     <div><dt>Cliente</dt><dd>${txt(p.cliente)}</dd></div>
     <div><dt>Año</dt><dd>${txt(p.anio)}</dd></div>
     <div><dt>Mi rol</dt><dd>${txt(p.rol)}</dd></div>
-    <div><dt>Disciplinas</dt><dd>${p.disciplinas.map(esc).join(", ")}</dd></div>
+    <div><dt>Categoría</dt><dd>${esc(nombreCategoria(p.categoria))}</dd></div>
   </dl>
 
   <div class="caso-cuerpo">
@@ -209,7 +199,7 @@ ${cabeceraSitio(raiz, "caso")}
       ${galeria}
   </section>
 
-  <nav class="siguiente" aria-label="Siguiente proyecto" style="${universo(sig)}">
+  <nav class="siguiente" aria-label="Siguiente proyecto">
     <a href="../${sig.slug}/">
       <span class="siguiente-label">Siguiente proyecto</span>
       <span class="siguiente-nombre">${esc(sig.nombre)}</span>

@@ -1,17 +1,18 @@
 /* Rodas Works — hoja de estilos
-   Fondo blanco y tipografía provisoria (Arial): el trabajo pone el color. Cada proyecto es una banda con su serie de piezas. */
+   Grises del logo y tipografía provisoria (Arial). Cada categoría es una banda con sus proyectos en fila. */
 
 :root {
-  --blanco: #ffffff;
-  --negro: #1c1c1c;
-  --gris: #5e5e5e;
-  --linea: #e2e2e2;
-  --etiqueta: #f0f0f0;
+  /* Colores del logo de Rodas Works */
+  --blanco: #eaeaea;
+  --negro: #3c3c3c;
+  --gris: #575757;
+  --linea: #cdcdcd;
+  --etiqueta: #dcdcdc;
   --pendiente-fondo: #ffe27a;
 
   --margen: clamp(1.25rem, 4vw, 3.5rem);
   --ancho-texto: 62ch;
-  --alto-pieza: clamp(15rem, 34vw, 27rem);
+  --alto-pieza: clamp(13rem, 24vw, 20rem);
 
   --t-0: 0.875rem;
   --t-1: 1.0625rem;
@@ -107,7 +108,7 @@ figure {
   z-index: 5;
   display: flex;
   justify-content: space-between;
-  align-items: baseline;
+  align-items: center;
   gap: 1.5rem;
   padding: 1.1rem var(--margen);
   background: var(--blanco);
@@ -115,9 +116,12 @@ figure {
 }
 
 .marca {
-  font-weight: 700;
-  font-size: var(--t-2);
-  text-decoration: none;
+  display: block;
+  line-height: 0;
+}
+.marca img {
+  height: 1.35rem;
+  width: auto;
 }
 
 .sitio nav {
@@ -152,32 +156,15 @@ figure {
   color: var(--gris);
 }
 
-/* ---------- Filtros ---------- */
-.proyectos-barra {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 0.75rem 2rem;
-  padding: 1rem var(--margen);
-  border-top: 1px solid var(--linea);
-}
-
-.proyectos-barra h2 {
-  font-size: var(--t-1);
-  font-weight: 600;
-  margin-right: auto;
-}
-
-.filtros {
+/* ---------- Saltos a categorías ---------- */
+.saltos {
   display: flex;
   flex-wrap: wrap;
   gap: 0.4rem;
+  padding: 1rem var(--margen);
+  border-top: 1px solid var(--linea);
 }
-.filtros[hidden] {
-  display: none;
-}
-
-.filtros button,
+.saltos a,
 .serie-botones button {
   font: inherit;
   font-size: var(--t-0);
@@ -185,20 +172,19 @@ figure {
   background: transparent;
   border: 1px solid var(--linea);
   border-radius: 999px;
-  padding: 0.35rem 0.9rem;
+  padding: 0.45rem 0.95rem;
   min-height: 2.5rem;
   cursor: pointer;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
 }
-.filtros button:hover,
+.saltos a:hover,
 .serie-botones button:hover {
   border-color: currentColor;
 }
-.filtros button[aria-pressed="true"] {
-  background: var(--negro);
-  color: var(--blanco);
-  border-color: var(--negro);
-}
-.filtros .n {
+.saltos .n {
   opacity: 0.6;
   font-variant-numeric: tabular-nums;
 }
@@ -213,9 +199,12 @@ figure {
 }
 
 .banda.destacada {
-  background: var(--fondo);
-  color: var(--tinta);
+  background: var(--negro);
+  color: var(--blanco);
   border-top: 0;
+}
+.banda {
+  scroll-margin-top: 4rem;
 }
 
 .banda-texto {
@@ -228,17 +217,17 @@ figure {
   margin-bottom: clamp(1.75rem, 4vh, 2.5rem);
 }
 
-.banda h3 {
+.banda h2 {
   grid-area: titulo;
   font-size: var(--t-3);
   font-weight: 500;
   line-height: 1.08;
   text-wrap: balance;
 }
-.banda h3 a {
+.banda h2 a {
   text-decoration: none;
 }
-.banda h3 a:hover {
+.banda h2 a:hover {
   text-decoration: underline;
   text-decoration-thickness: 2px;
 }
@@ -278,23 +267,17 @@ figure {
   scroll-snap-align: start;
 }
 
-.pieza {
+.tarjeta {
   display: flex;
   flex-direction: column;
-  gap: 0.6rem;
+  gap: 0.5rem;
+  text-decoration: none;
 }
-
-.pieza figcaption {
-  order: -1;
+.tarjeta-anio {
   font-size: var(--t-0);
   color: var(--gris);
 }
-.destacada .pieza figcaption {
-  color: inherit;
-  opacity: 0.85;
-}
-
-.pieza-img {
+.tarjeta-img {
   display: grid;
   place-items: center;
   height: var(--alto-pieza);
@@ -304,57 +287,43 @@ figure {
   font-size: var(--t-0);
   text-align: center;
 }
-.pieza-img span {
+.tarjeta-img span {
   opacity: 0.7;
 }
-.vertical .pieza-img {
+.vertical .tarjeta-img {
   aspect-ratio: 2 / 3;
 }
-.cuadrada .pieza-img {
+.cuadrada .tarjeta-img {
   aspect-ratio: 1;
 }
-.ancha .pieza-img {
+.ancha .tarjeta-img {
   aspect-ratio: 16 / 10;
 }
-
-/* En la banda destacada las piezas se separan del fondo con un tono propio */
-.destacada .pieza-img {
-  background: color-mix(in srgb, var(--tinta) 14%, var(--fondo));
+.tarjeta-nombre {
+  margin-top: 0.35rem;
+  font-size: var(--t-2);
+  font-weight: 700;
+  line-height: 1.2;
+}
+.tarjeta-resumen {
+  font-size: var(--t-0);
+  color: var(--gris);
+  max-width: 40ch;
+}
+.tarjeta:hover .tarjeta-nombre {
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+}
+.destacada .tarjeta-anio,
+.destacada .tarjeta-resumen {
+  color: inherit;
+  opacity: 0.8;
 }
 
 .banda-pie {
   display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 0.75rem 1.5rem;
-  margin-top: 1rem;
-}
-
-.etiquetas {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.4rem;
-  list-style: none;
-  padding: 0;
-  margin-right: auto;
-  font-size: var(--t-0);
-}
-.etiquetas li {
-  background: var(--etiqueta);
-  padding: 0.2rem 0.6rem;
-  border-radius: 3px;
-}
-.etiquetas li.anio {
-  background: transparent;
-  color: var(--gris);
-  padding-inline: 0.3rem;
-}
-.destacada .etiquetas li {
-  background: color-mix(in srgb, var(--tinta) 16%, transparent);
-}
-.destacada .etiquetas li.anio {
-  background: transparent;
-  color: inherit;
+  justify-content: flex-end;
+  margin-top: 0.5rem;
 }
 
 .serie-botones {
@@ -365,12 +334,9 @@ figure {
   display: none;
 }
 .destacada .serie-botones button {
-  border-color: color-mix(in srgb, var(--tinta) 40%, transparent);
+  border-color: color-mix(in srgb, var(--blanco) 40%, transparent);
 }
 
-.ver {
-  font-weight: 600;
-}
 
 .sin-resultados {
   padding: 2rem var(--margen);
@@ -447,6 +413,10 @@ figure {
   padding: clamp(3rem, 12vh, 7rem) var(--margen) clamp(2rem, 5vh, 3rem);
 }
 
+.caso-categoria {
+  margin-bottom: 1rem;
+  font-size: var(--t-0);
+}
 .caso-cabecera h1 {
   font-size: clamp(2.5rem, 7vw, 6rem);
   font-weight: 500;
@@ -606,7 +576,8 @@ figure {
   .placeholder.vertical {
     grid-column: span 12;
   }
-  .serie-botones {
+  .serie-botones,
+  .banda-pie {
     display: none !important;
   }
 }

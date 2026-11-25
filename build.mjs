@@ -62,7 +62,7 @@ const banda = (c, i) => {
   const tarjetas = c.lista
     .map(
       (p) => `<li>
-          <a class="tarjeta ${p.imagenes[0]?.formato ?? "ancha"}" href="proyectos/${p.slug}/" style="${universo(p)}">
+          <a class="tarjeta ${p.imagenes[0]?.formato ?? "ancha"}${p.categoria === "editorial" ? " libro" : ""}" href="proyectos/${p.slug}/" style="${universo(p)}">
             <span class="tarjeta-anio">${plano(p.anio) ? esc(p.anio) : "&nbsp;"}</span>
             <span class="tarjeta-img" aria-hidden="true"><span>Imagen pendiente</span></span>
             <span class="tarjeta-nombre" style="view-transition-name:t-${p.slug}">${esc(p.nombre)}</span>
@@ -119,22 +119,23 @@ ${cabeceraSitio("./")}
       <p>Diseñador gráfico de la Universidad Andrés Bello (2018). Desde 2022 llevo los medios digitales de TOP Underwear: campañas, redes sociales, mailing, pauta en Meta y Google, y producción de imagen y video con IA.</p>
       <p>Me interesa que cada punto de contacto de una marca se sienta parte de lo mismo: el logo, el post, el correo y el anuncio. Por eso trabajo entre el diseño, la comunicación y la estrategia.</p>
       <p>Antes, en Terrafirma, también fui Encargado de Medios Digitales: mantenía las gráficas del sitio web y comunicaba los estrenos en redes sociales.</p>
-      <p><span class="pendiente">Por completar: botón «Descargar CV (PDF)»</span></p>
+      <p><a class="boton" href="./assets/cv/CV-Patricio-Rodas.pdf" download>Descargar CV (PDF)</a></p>
     </div>
     <dl class="herramientas">
       <div><dt>Diseño</dt><dd>Illustrator, Photoshop, InDesign, After Effects, Blender</dd></div>
       <div><dt>Marketing</dt><dd>Meta Ads, Google Ads, Klaviyo, Shopify</dd></div>
-      <div><dt>IA</dt><dd>Seedream, Nano Banana, Veo, Higgsfield</dd></div>
+      <div><dt>IA</dt><dd>Higgsfield y Magnific, con modelos como Seedream, Nano Banana y Veo</dd></div>
     </dl>
   </section>
 
-  <section id="logo" class="marca-historia" aria-labelledby="logo-titulo">
-    <h2 id="logo-titulo">El logo</h2>
+  <section id="dato-curioso" class="marca-historia" aria-labelledby="logo-titulo">
+    <h2 id="logo-titulo">Dato curioso</h2>
     <div class="marca-historia-cuerpo">
       <img src="./assets/img/rodasworks-logo.png" alt="Logo de Rodas Works: las letras RW en bloques, sobre el nombre Rodas Works." width="720" height="478" loading="lazy">
       <div class="sobre-texto">
-        <p>Mi nombre completo es Patricio Hogmin Rodas Weng: PHRW. La marca toma dos de esas letras, RW, que también son Rodas Works.</p>
-        <p>El juego está en el dibujo. Las formas están cortadas de manera que, si lo miras con calma, aparecen tres letras: una P, una R y una W.</p>
+        <p class="dato-pregunta">¿Encontraste la P?</p>
+        <p>Mi nombre completo es Patricio Hogmin Rodas Weng. Sí, PHRW. El logo dice RW por Rodas Works, pero los cortes del dibujo esconden tres letras: una P, una R y una W.</p>
+        <p>Si ya las viste todas, ahora no vas a poder dejar de verlas.</p>
       </div>
     </div>
   </section>

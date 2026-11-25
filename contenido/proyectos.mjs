@@ -7,7 +7,8 @@ export const categorias = [
   { slug: "audiovisual", nombre: "Audiovisual", descripcion: "Comerciales y animación." },
   { slug: "branding", nombre: "Branding", descripcion: "Identidades y manuales de marca." },
   { slug: "editorial", nombre: "Editorial", descripcion: "Diseño y diagramación de libros." },
-  { slug: "interactivo", nombre: "Interactivo", descripcion: "Juegos y experiencias para el navegador." },
+  { slug: "aprender-jugando", nombre: "Aprender jugando", descripcion: "Juegos creados con IA para repasar lo visto en clases de una forma más liviana." },
+  { slug: "juegos", nombre: "Juegos", descripcion: "Juegos para el navegador hechos con IA." },
 ];
 
 export const proyectos = [
@@ -130,26 +131,8 @@ export const proyectos = [
     ],
   },
   {
-    slug: "la-pieza-14",
-    categoria: "interactivo",
-    nombre: "La pieza 14",
-    resumen: "Juego de detectives para el navegador, de atmósfera sombría.",
-    anio: "2026",
-    cliente: "Proyecto propio",
-    rol: "Concepto, dirección de arte y desarrollo con IA",
-    fondo: "#1C2521",
-    tinta: "#CBD77E",
-    encargo: "pendiente: la premisa del juego.",
-    hice: ["pendiente: qué diseñaste y cómo lo construiste."],
-    numeros: [],
-    imagenes: [
-      { texto: "Pantalla de inicio", formato: "ancha" },
-      { texto: "Pantalla de juego", formato: "ancha" },
-    ],
-  },
-  {
     slug: "juego-de-las-puertas",
-    categoria: "interactivo",
+    categoria: "aprender-jugando",
     nombre: "El juego de las puertas",
     resumen: "Juego educativo para repasar historia de Chile.",
     anio: "2026",
@@ -164,6 +147,24 @@ export const proyectos = [
       { texto: "Pantalla de juego", formato: "ancha" },
       { texto: "Detalle de ilustración", formato: "cuadrada" },
       { texto: "Pantalla de pregunta", formato: "cuadrada" },
+    ],
+  },
+  {
+    slug: "la-pieza-14",
+    categoria: "juegos",
+    nombre: "La pieza 14",
+    resumen: "Juego de detectives para el navegador, de atmósfera sombría.",
+    anio: "2026",
+    cliente: "Proyecto propio",
+    rol: "Concepto, dirección de arte y desarrollo con IA",
+    fondo: "#1C2521",
+    tinta: "#CBD77E",
+    encargo: "pendiente: la premisa del juego.",
+    hice: ["pendiente: qué diseñaste y cómo lo construiste."],
+    numeros: [],
+    imagenes: [
+      { texto: "Pantalla de inicio", formato: "ancha" },
+      { texto: "Pantalla de juego", formato: "ancha" },
     ],
   },
 ];

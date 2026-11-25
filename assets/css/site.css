@@ -649,3 +649,35 @@ figure {
     max-width: 16rem;
   }
 }
+
+.dato-pregunta {
+  font-size: var(--t-3);
+  font-weight: 300;
+  line-height: 1.1;
+}
+
+.boton {
+  display: inline-flex;
+  align-items: center;
+  min-height: 2.75rem;
+  padding: 0.6rem 1.2rem;
+  border-radius: 999px;
+  background: var(--negro);
+  color: var(--blanco);
+  font-size: var(--t-1);
+  font-weight: 600;
+  text-decoration: none;
+}
+.boton:hover {
+  background: #2a2a2a;
+}
+
+/* Libros: portada con sombra suave, como un libro apoyado sobre la página */
+.libro .tarjeta-img {
+  box-shadow:
+    0 22px 28px -18px rgba(0, 0, 0, 0.45),
+    0 2px 6px rgba(0, 0, 0, 0.12);
+}
+.serie:has(.libro) ul {
+  padding-bottom: 2rem;
+}

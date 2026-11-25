@@ -124,7 +124,7 @@ ${cabeceraSitio("./")}
     <dl class="herramientas">
       <div><dt>Diseño</dt><dd>Illustrator, Photoshop, InDesign, After Effects, Blender</dd></div>
       <div><dt>Marketing</dt><dd>Meta Ads, Google Ads, Klaviyo, Shopify</dd></div>
-      <div><dt>IA</dt><dd>Higgsfield y Magnific, con modelos como Seedream, Nano Banana y Veo</dd></div>
+      <div><dt>IA</dt><dd>Higgsfield y Magnific, con modelos como Seedream, Nano Banana y Seedance</dd></div>
     </dl>
   </section>
 

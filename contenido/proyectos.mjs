@@ -8,7 +8,6 @@ export const categorias = [
   { slug: "branding", nombre: "Branding", descripcion: "Identidades y manuales de marca." },
   { slug: "editorial", nombre: "Editorial", descripcion: "Diseño y diagramación de libros." },
   { slug: "aprender-jugando", nombre: "Aprender jugando", descripcion: "Juegos creados con IA para repasar lo visto en clases de una forma más liviana." },
-  { slug: "juegos", nombre: "Juegos", descripcion: "Juegos para el navegador hechos con IA." },
 ];
 
 export const proyectos = [
@@ -116,10 +115,10 @@ export const proyectos = [
     slug: "fahrenheit-451",
     categoria: "editorial",
     nombre: "Fahrenheit 451",
-    resumen: "pendiente: qué hiciste en el libro (portada, diagramación, edición especial).",
+    resumen: "Edición del libro diseñada y encuadernada a mano.",
     anio: "pendiente",
-    cliente: "pendiente",
-    rol: "pendiente",
+    cliente: "Proyecto universitario",
+    rol: "Diseño editorial y encuadernación",
     fondo: "#24150F",
     tinta: "#FF8A3D",
     encargo: "pendiente: el encargo y la idea detrás del diseño.",
@@ -147,24 +146,6 @@ export const proyectos = [
       { texto: "Pantalla de juego", formato: "ancha" },
       { texto: "Detalle de ilustración", formato: "cuadrada" },
       { texto: "Pantalla de pregunta", formato: "cuadrada" },
-    ],
-  },
-  {
-    slug: "la-pieza-14",
-    categoria: "juegos",
-    nombre: "La pieza 14",
-    resumen: "Juego de detectives para el navegador, de atmósfera sombría.",
-    anio: "2026",
-    cliente: "Proyecto propio",
-    rol: "Concepto, dirección de arte y desarrollo con IA",
-    fondo: "#1C2521",
-    tinta: "#CBD77E",
-    encargo: "pendiente: la premisa del juego.",
-    hice: ["pendiente: qué diseñaste y cómo lo construiste."],
-    numeros: [],
-    imagenes: [
-      { texto: "Pantalla de inicio", formato: "ancha" },
-      { texto: "Pantalla de juego", formato: "ancha" },
     ],
   },
 ];

@@ -49,16 +49,19 @@
     if (intro && "IntersectionObserver" in window) {
       new IntersectionObserver(([e]) => (visible = e.isIntersecting)).observe(intro);
     }
+    const FUNDIDO = 350; // igual a la transición de opacidad en el CSS
+    const cambiar = async (p, especial) => {
+      p.classList.add("volteando"); // se desvanece
+      await espera(FUNDIDO);
+      p.classList.toggle("especial", especial);
+      p.classList.remove("volteando"); // vuelve a aparecer con la otra tipografía
+    };
     const domino = async (especial) => {
       for (const p of palabras) {
-        p.classList.remove("volteando");
-        void p.offsetWidth; // reinicia la animación
-        p.classList.add("volteando");
-        setTimeout(() => p.classList.toggle("especial", especial), 250); // cambia a mitad del giro
+        cambiar(p, especial);
         await espera(PASO);
       }
-      await espera(500);
-      palabras.forEach((p) => p.classList.remove("volteando"));
+      await espera(FUNDIDO * 2);
     };
     // Reposo en la tipografía original 3 s, dominó a las especiales, 2 s así y dominó de vuelta.
     // (Sin animación, por ejemplo con "reducir movimiento", quedan fijas las especiales.)

@@ -774,24 +774,18 @@ a:hover {
   font-style: italic;
 }
 
-/* Efecto dominó: cada palabra se voltea, cambia de tipografía a mitad de giro y vuelve */
-.t-palabra.volteando {
-  animation: voltear 0.5s cubic-bezier(0.45, 0, 0.55, 1);
+/* Efecto dominó: cada palabra se desvanece, cambia de tipografía y vuelve a aparecer */
+.t-palabra {
+  transition: opacity 0.35s ease;
 }
-@keyframes voltear {
-  0% {
-    transform: perspective(400px) rotateX(0deg);
-  }
-  50% {
-    transform: perspective(400px) rotateX(90deg);
-  }
-  100% {
-    transform: perspective(400px) rotateX(0deg);
-  }
+.t-palabra.volteando {
+  opacity: 0;
 }
 @media (prefers-reduced-motion: reduce) {
+  .t-palabra,
   .t-palabra.volteando {
-    animation: none;
+    transition: none;
+    opacity: 1;
   }
 }
 

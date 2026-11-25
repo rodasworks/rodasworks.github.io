@@ -19,7 +19,9 @@ const plano = (s) => (/^pendiente/i.test(String(s)) ? "" : String(s));
 
 const nombreCategoria = (slug) => categorias.find((c) => c.slug === slug)?.nombre ?? slug;
 
-const head = ({ titulo, descripcion, raiz }) => `<!doctype html>
+const SITIO = "https://rodasworks.github.io/";
+
+const head = ({ titulo, descripcion, raiz, ruta = "" }) => `<!doctype html>
 <html lang="es-CL">
 <head>
 <meta charset="utf-8">
@@ -27,6 +29,17 @@ const head = ({ titulo, descripcion, raiz }) => `<!doctype html>
 <title>${esc(titulo)}</title>
 <meta name="description" content="${esc(descripcion)}">
 <meta name="color-scheme" content="light">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="es_CL">
+<meta property="og:site_name" content="Rodas Works">
+<meta property="og:title" content="${esc(titulo)}">
+<meta property="og:description" content="${esc(descripcion)}">
+<meta property="og:url" content="${SITIO}${ruta}">
+<meta property="og:image" content="${SITIO}og.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Logo de Rodas Works junto al titular del portafolio.">
+<meta name="twitter:card" content="summary_large_image">
 <link rel="preload" href="${raiz}assets/fonts/figtree.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="icon" href="${raiz}favicon.png" type="image/png">
 <link rel="stylesheet" href="${raiz}assets/css/site.css">
@@ -185,6 +198,7 @@ const pagina = (p, i) => {
     titulo: `${p.nombre} — Rodas Works`,
     descripcion: `${p.nombre}. ${plano(p.resumen)}`.trim(),
     raiz,
+    ruta: `proyectos/${p.slug}/`,
   })}
 <body class="caso" style="${universo(p)}">
 ${cabeceraSitio(raiz)}

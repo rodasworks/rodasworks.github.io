@@ -1442,3 +1442,13 @@ a:hover {
     transition: none;
   }
 }
+
+/* ---------- Niveles de gris por sección ---------- */
+#apoyo-escolar {
+  background: #f2f2f2; /* 5 % de negro */
+}
+#editorial,
+.sobre,
+.marca-historia {
+  background: #fafafa; /* 2 % de negro */
+}

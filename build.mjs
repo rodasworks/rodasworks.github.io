@@ -101,7 +101,7 @@ const indice = `${head({
 ${cabeceraSitio("./")}
 <main id="contenido">
   <section class="intro" aria-labelledby="intro-titulo">
-    <h1 id="intro-titulo">Diseño de marca, audiovisual, libros y proyectos interactivos.</h1>
+    <h1 id="intro-titulo">Diseño identidades y las llevo a la pantalla, al papel y al movimiento.</h1>
     <p class="quien">Soy Patricio Rodas, diseñador gráfico en Santiago de Chile.</p>
   </section>
 

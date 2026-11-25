@@ -27,6 +27,7 @@ const head = ({ titulo, descripcion, raiz }) => `<!doctype html>
 <title>${esc(titulo)}</title>
 <meta name="description" content="${esc(descripcion)}">
 <meta name="color-scheme" content="light">
+<link rel="preload" href="${raiz}assets/fonts/figtree.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="icon" href="${raiz}favicon.png" type="image/png">
 <link rel="stylesheet" href="${raiz}assets/css/site.css">
 <script src="${raiz}assets/js/site.js" defer></script>

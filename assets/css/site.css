@@ -1,5 +1,12 @@
 /* Rodas Works — hoja de estilos
-   Grises del logo y tipografía provisoria (Arial). Cada categoría es una banda con sus proyectos en fila. */
+   Grises del logo y tipografía Figtree (alternativa libre a Avenir). Cada categoría es una banda con sus proyectos en fila. */
+
+@font-face {
+  font-family: "Figtree";
+  src: url("../fonts/figtree.woff2") format("woff2-variations");
+  font-weight: 300 900;
+  font-display: swap;
+}
 
 :root {
   /* Colores del logo de Rodas Works */
@@ -39,7 +46,7 @@ html {
 
 body {
   margin: 0;
-  font-family: Arial, Helvetica, sans-serif; /* provisoria: la tipografía final se define con Pato */
+  font-family: "Figtree", "Avenir Next", Avenir, system-ui, sans-serif;
   font-size: var(--t-1);
   line-height: 1.55;
   background: var(--blanco);
@@ -142,7 +149,7 @@ figure {
 
 .intro h1 {
   font-size: var(--t-display);
-  font-weight: 500;
+  font-weight: 300;
   line-height: 1.08;
   max-width: 20ch;
   text-wrap: balance;
@@ -220,7 +227,7 @@ figure {
 .banda h2 {
   grid-area: titulo;
   font-size: var(--t-3);
-  font-weight: 500;
+  font-weight: 300;
   line-height: 1.08;
   text-wrap: balance;
 }
@@ -302,7 +309,7 @@ figure {
 .tarjeta-nombre {
   margin-top: 0.35rem;
   font-size: var(--t-2);
-  font-weight: 700;
+  font-weight: 800;
   line-height: 1.2;
 }
 .tarjeta-resumen {
@@ -385,7 +392,7 @@ figure {
 
 .contacto-frase {
   font-size: var(--t-display);
-  font-weight: 500;
+  font-weight: 300;
   line-height: 1.08;
   max-width: 16ch;
   text-wrap: balance;
@@ -419,7 +426,7 @@ figure {
 }
 .caso-cabecera h1 {
   font-size: clamp(2.5rem, 7vw, 6rem);
-  font-weight: 500;
+  font-weight: 300;
   line-height: 1;
   max-width: 16ch;
   text-wrap: balance;
@@ -486,7 +493,7 @@ figure {
 .cifra {
   display: block;
   font-size: var(--t-display);
-  font-weight: 500;
+  font-weight: 300;
   line-height: 1;
   font-variant-numeric: tabular-nums;
 }
@@ -545,7 +552,7 @@ figure {
 .siguiente-nombre {
   display: block;
   font-size: var(--t-display);
-  font-weight: 500;
+  font-weight: 300;
   line-height: 1.05;
 }
 .siguiente a:hover .siguiente-nombre {

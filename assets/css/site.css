@@ -1102,3 +1102,21 @@ a:hover {
     max-width: 9.5rem;
   }
 }
+
+/* Dato curioso en escritorio: tres columnas propias, con el logo centrado entre el título y el texto */
+@media (min-width: 48.01rem) {
+  .post-it {
+    grid-template-columns: max-content minmax(10rem, 1fr) minmax(0, 36rem);
+    align-items: center;
+  }
+  .post-it h2 {
+    align-self: start;
+  }
+  .post-it .marca-historia-cuerpo {
+    display: contents;
+  }
+  .post-it .marca-historia-cuerpo img {
+    width: 12rem;
+    justify-self: center;
+  }
+}

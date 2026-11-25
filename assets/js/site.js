@@ -66,11 +66,16 @@
     // Reposo en la tipografía original 3 s, dominó a las especiales, 2 s así y dominó de vuelta.
     // (Sin animación, por ejemplo con "reducir movimiento", quedan fijas las especiales.)
     palabras.forEach((p) => p.classList.remove("especial"));
+    // Da 4 vueltas y se detiene para siempre en las tipografías especiales.
+    const VUELTAS = 4;
     const ciclo = async () => {
-      for (;;) {
+      let vueltas = 0;
+      while (vueltas < VUELTAS) {
         await espera(3000);
         if (!visible || document.hidden) continue;
         await domino(true);
+        vueltas++;
+        if (vueltas === VUELTAS) break;
         await espera(2000);
         await domino(false);
       }

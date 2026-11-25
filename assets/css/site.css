@@ -1134,3 +1134,31 @@ a:hover {
 .serie.hay-despues {
   --borde-der: rgba(0, 0, 0, 0.7);
 }
+
+/* ---------- Página 404 ---------- */
+.error-404 {
+  min-height: 70vh;
+  padding: clamp(4rem, 14vh, 9rem) var(--margen);
+  display: grid;
+  align-content: center;
+  justify-items: start;
+  gap: 1.25rem;
+}
+.error-codigo {
+  font-family: "Pixelify Sans", ui-monospace, monospace;
+  font-size: clamp(5rem, 16vw, 11rem);
+  line-height: 0.9;
+  color: var(--azul);
+}
+.error-404 h1 {
+  font-size: var(--t-display);
+  font-weight: 300;
+  line-height: 1.08;
+  max-width: 18ch;
+}
+.error-404 p:not(.error-codigo) {
+  max-width: 46ch;
+  font-size: var(--t-2);
+  line-height: 1.4;
+  color: var(--gris);
+}

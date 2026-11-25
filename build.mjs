@@ -164,7 +164,7 @@ ${cabeceraSitio("./")}
     <ul class="contacto-links">
       <li><a href="mailto:rodas.works@gmail.com">rodas.works@gmail.com</a></li>
       <li><a href="https://www.linkedin.com/in/patecorodas/" rel="me">LinkedIn</a></li>
-      <li><a href="https://www.instagram.com/rodas_works/" rel="me">Instagram</a></li>
+      <li><a href="https://www.instagram.com/rodas_works/" rel="me">Instagram (archivo)</a></li>
     </ul>
   </section>
 </main>
@@ -247,6 +247,25 @@ ${pie}
 `;
 };
 
+const pagina404 = `${head({
+  titulo: "Página no encontrada — Rodas Works",
+  descripcion: "Esta página no existe. Vuelve al portafolio de Rodas Works.",
+  raiz: "/",
+})}
+<body class="no-encontrada">
+${cabeceraSitio("/")}
+<main id="contenido" class="error-404">
+  <p class="error-codigo">404</p>
+  <h1>Esta página se nos perdió.</h1>
+  <p>Puede que el link esté mal escrito o que el proyecto haya cambiado de lugar. Lo bueno es que el resto del portafolio sigue aquí.</p>
+  <p><a class="boton" href="/">Volver al inicio</a></p>
+</main>
+${pie}
+</body>
+</html>
+`;
+
+writeFileSync("404.html", pagina404);
 writeFileSync("index.html", indice);
 if (existsSync("proyectos")) rmSync("proyectos", { recursive: true });
 proyectos.forEach((p, i) => {

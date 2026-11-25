@@ -80,7 +80,7 @@ const banda = (c, i) => {
       (p) => `<li>
           <a class="tarjeta ${p.imagenes[0]?.formato ?? "ancha"}${p.categoria === "editorial" ? " libro" : ""}" href="proyectos/${p.slug}/" style="${universo(p)}">
             <span class="tarjeta-anio">${plano(p.anio) ? esc(p.anio) : "&nbsp;"}</span>
-            <span class="tarjeta-img" aria-hidden="true"><span>Imagen pendiente</span></span>
+            <span class="tarjeta-img" aria-hidden="true"><span class="tarjeta-img-fondo"><span>Imagen pendiente</span></span>${p.categoria === "audiovisual" ? '<span class="play"><svg viewBox="0 0 24 24" width="24" height="24"><path d="M8 5.5v13l10.5-6.5z" fill="currentColor"/></svg></span>' : ""}</span>
             <span class="tarjeta-nombre" style="view-transition-name:t-${p.slug}">${esc(p.nombre)}</span>
             <span class="tarjeta-resumen">${plano(p.resumen) ? esc(p.resumen) : `Cliente: ${esc(plano(p.cliente) || "por completar")}`}</span>
           </a>
@@ -256,8 +256,8 @@ const pagina404 = `${head({
 ${cabeceraSitio("/")}
 <main id="contenido" class="error-404">
   <p class="error-codigo">404</p>
-  <h1>Esta página se nos perdió.</h1>
-  <p>Puede que el link esté mal escrito o que el proyecto haya cambiado de lugar. Lo bueno es que el resto del portafolio sigue aquí.</p>
+  <h1>Chuta, esta página no existe.</h1>
+  <p>Esta página no existe, pero no es culpa de nadie (bueno, quizás un poco mía). Mejor volvamos al inicio.</p>
   <p><a class="boton" href="/">Volver al inicio</a></p>
 </main>
 ${pie}

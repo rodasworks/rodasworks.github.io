@@ -1162,3 +1162,67 @@ a:hover {
   line-height: 1.4;
   color: var(--gris);
 }
+
+/* ---------- Hover de Audiovisual: zoom suave dentro de la imagen y botón de play ---------- */
+.tarjeta-img {
+  position: relative;
+  overflow: hidden;
+}
+.tarjeta-img-fondo {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  padding: 1rem;
+  background: inherit;
+  transition: transform 0.6s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+.destacada .tarjeta:hover .tarjeta-img-fondo,
+.destacada .tarjeta:focus-visible .tarjeta-img-fondo {
+  transform: scale(1.05);
+}
+.play {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 4rem;
+  height: 4rem;
+  margin: -2rem 0 0 -2rem;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.92);
+  color: var(--azul);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+  opacity: 0;
+  transform: scale(0.85);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+.play svg {
+  width: 1.6rem;
+  height: 1.6rem;
+  margin-left: 0.15rem;
+}
+.tarjeta:hover .play,
+.tarjeta:focus-visible .play {
+  opacity: 1;
+  transform: scale(1);
+}
+@media (hover: none) and (pointer: coarse) {
+  .play {
+    opacity: 0.9;
+    transform: none;
+    width: 3rem;
+    height: 3rem;
+    margin: -1.5rem 0 0 -1.5rem;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .tarjeta-img-fondo,
+  .play {
+    transition: none;
+  }
+  .destacada .tarjeta:hover .tarjeta-img-fondo {
+    transform: none;
+  }
+}

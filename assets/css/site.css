@@ -942,3 +942,29 @@ a:hover {
 .pie {
   border-top-color: transparent;
 }
+
+/* ---------- Banda destacada (Audiovisual) en azul eléctrico, como Contacto ---------- */
+.banda.destacada {
+  background: var(--azul);
+  color: #ffffff;
+}
+.destacada .conteo,
+.destacada .tarjeta:hover .tarjeta-nombre {
+  color: #ffffff;
+}
+.destacada .tarjeta-anio,
+.destacada .tarjeta-resumen {
+  color: rgba(255, 255, 255, 0.85);
+  opacity: 1;
+}
+.destacada :focus-visible {
+  outline-color: #ffffff;
+}
+.destacada .serie-botones button {
+  border-color: rgba(255, 255, 255, 0.5);
+}
+.destacada .serie-botones button:hover:not(:disabled) {
+  border-color: #ffffff;
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.12);
+}

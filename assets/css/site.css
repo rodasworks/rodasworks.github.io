@@ -1067,3 +1067,28 @@ a:hover {
     border-radius: 22px;
   }
 }
+
+/* ---------- Desvanecido en los bordes de la serie cuando hay más proyectos hacia ese lado ---------- */
+.serie {
+  --fundido-izq: 0px;
+  --fundido-der: 0px;
+  -webkit-mask-image: linear-gradient(to right, transparent 0, #000 var(--fundido-izq), #000 calc(100% - var(--fundido-der)), transparent 100%);
+  mask-image: linear-gradient(to right, transparent 0, #000 var(--fundido-izq), #000 calc(100% - var(--fundido-der)), transparent 100%);
+}
+.serie.hay-antes {
+  --fundido-izq: clamp(2.5rem, 7vw, 6rem);
+}
+.serie.hay-despues {
+  --fundido-der: clamp(2.5rem, 7vw, 6rem);
+}
+
+/* El ancho de cada tarjeta lo define su imagen; los textos se ajustan a ese ancho */
+.tarjeta-anio,
+.tarjeta-nombre,
+.tarjeta-resumen {
+  width: 0;
+  min-width: 100%;
+}
+.tarjeta-img {
+  align-self: flex-start;
+}

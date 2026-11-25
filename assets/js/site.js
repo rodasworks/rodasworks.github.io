@@ -114,6 +114,8 @@
         });
       }
       botones.forEach((b, i) => b.setAttribute("aria-current", String(i === activo)));
+      serie.classList.toggle("hay-antes", serie.scrollLeft > 4);
+      serie.classList.toggle("hay-despues", serie.scrollLeft < max - 4);
     };
 
     serie.addEventListener("scroll", actualizar, { passive: true });

@@ -921,3 +921,30 @@ a:hover {
     position: relative;
   }
 }
+
+/* ---------- Contacto en azul eléctrico ---------- */
+.contacto {
+  background: var(--azul);
+  color: #ffffff;
+  border-top: 0;
+}
+.contacto h2,
+.contacto-frase,
+.contacto-links a {
+  color: #ffffff;
+}
+.contacto-links a {
+  text-decoration-color: rgba(255, 255, 255, 0.6);
+}
+.contacto-links a:hover {
+  color: #ffffff;
+  text-decoration-color: #ffffff;
+  text-decoration-thickness: 2px;
+}
+.contacto :focus-visible {
+  outline-color: #ffffff;
+}
+.contacto + * ,
+.pie {
+  border-top-color: transparent;
+}

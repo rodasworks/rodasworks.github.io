@@ -1120,3 +1120,17 @@ a:hover {
     justify-self: center;
   }
 }
+
+/* Desvanecido más suave: el borde oculta como máximo un 30 % */
+.serie {
+  --borde-izq: #000;
+  --borde-der: #000;
+  -webkit-mask-image: linear-gradient(to right, var(--borde-izq) 0, #000 var(--fundido-izq), #000 calc(100% - var(--fundido-der)), var(--borde-der) 100%);
+  mask-image: linear-gradient(to right, var(--borde-izq) 0, #000 var(--fundido-izq), #000 calc(100% - var(--fundido-der)), var(--borde-der) 100%);
+}
+.serie.hay-antes {
+  --borde-izq: rgba(0, 0, 0, 0.7);
+}
+.serie.hay-despues {
+  --borde-der: rgba(0, 0, 0, 0.7);
+}

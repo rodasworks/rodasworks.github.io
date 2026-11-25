@@ -1,12 +1,5 @@
 /* Rodas Works — hoja de estilos
-   Fondo blanco y tipografía sobria: el trabajo pone el color. Cada proyecto es una banda con su serie de piezas. */
-
-@font-face {
-  font-family: "Schibsted";
-  src: url("../fonts/schibsted.woff2") format("woff2-variations");
-  font-weight: 400 900;
-  font-display: swap;
-}
+   Fondo blanco y tipografía provisoria (Arial): el trabajo pone el color. Cada proyecto es una banda con su serie de piezas. */
 
 :root {
   --blanco: #ffffff;
@@ -45,7 +38,7 @@ html {
 
 body {
   margin: 0;
-  font-family: "Schibsted", system-ui, sans-serif;
+  font-family: Arial, Helvetica, sans-serif; /* provisoria: la tipografía final se define con Pato */
   font-size: var(--t-1);
   line-height: 1.55;
   background: var(--blanco);
@@ -124,7 +117,6 @@ figure {
 .marca {
   font-weight: 700;
   font-size: var(--t-2);
-  letter-spacing: -0.02em;
   text-decoration: none;
 }
 
@@ -148,7 +140,6 @@ figure {
   font-size: var(--t-display);
   font-weight: 500;
   line-height: 1.08;
-  letter-spacing: -0.025em;
   max-width: 20ch;
   text-wrap: balance;
 }
@@ -242,7 +233,6 @@ figure {
   font-size: var(--t-3);
   font-weight: 500;
   line-height: 1.08;
-  letter-spacing: -0.025em;
   text-wrap: balance;
 }
 .banda h3 a {
@@ -431,7 +421,6 @@ figure {
   font-size: var(--t-display);
   font-weight: 500;
   line-height: 1.08;
-  letter-spacing: -0.025em;
   max-width: 16ch;
   text-wrap: balance;
 }
@@ -462,7 +451,6 @@ figure {
   font-size: clamp(2.5rem, 7vw, 6rem);
   font-weight: 500;
   line-height: 1;
-  letter-spacing: -0.03em;
   max-width: 16ch;
   text-wrap: balance;
 }
@@ -530,7 +518,6 @@ figure {
   font-size: var(--t-display);
   font-weight: 500;
   line-height: 1;
-  letter-spacing: -0.02em;
   font-variant-numeric: tabular-nums;
 }
 .cifra .pendiente {
@@ -590,7 +577,6 @@ figure {
   font-size: var(--t-display);
   font-weight: 500;
   line-height: 1.05;
-  letter-spacing: -0.025em;
 }
 .siguiente a:hover .siguiente-nombre {
   text-decoration: underline;

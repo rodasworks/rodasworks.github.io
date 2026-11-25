@@ -27,7 +27,6 @@ const head = ({ titulo, descripcion, raiz, extraStyle = "" }) => `<!doctype html
 <title>${esc(titulo)}</title>
 <meta name="description" content="${esc(descripcion)}">
 <meta name="color-scheme" content="light">
-<link rel="preload" href="${raiz}assets/fonts/schibsted.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="${raiz}assets/css/site.css">
 ${extraStyle}
 <script src="${raiz}assets/js/site.js" defer></script>

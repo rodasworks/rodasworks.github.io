@@ -24,6 +24,21 @@
     });
   }
 
+  // ---------- Cabecera sobre la portada ----------
+  const cabecera = document.querySelector(".inicio .sitio");
+  const portada = document.querySelector(".portada");
+  if (cabecera && portada) {
+    const medir = () => portada.style.setProperty("--alto-header", cabecera.offsetHeight + "px");
+    medir();
+    new ResizeObserver(medir).observe(cabecera);
+    // Apenas se empieza a bajar, la cabecera flotante pasa a su versión blanca.
+    const actualizarCabecera = () => {
+      cabecera.classList.toggle("sobre-claro", window.scrollY > 8);
+    };
+    window.addEventListener("scroll", actualizarCabecera, { passive: true });
+    actualizarCabecera();
+  }
+
   // ---------- Series ----------
   bandas.forEach((banda) => {
     const serie = banda.querySelector(".serie");

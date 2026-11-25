@@ -35,7 +35,10 @@ const head = ({ titulo, descripcion, raiz }) => `<!doctype html>
 
 const cabeceraSitio = (raiz) => `<a class="saltar" href="#contenido">Ir al contenido</a>
 <header class="sitio">
-  <a class="marca" href="${raiz}"><img class="marca-rw" src="${raiz}assets/img/rodasworks-rw.png" alt="" width="240" height="107"><img class="marca-nombre" src="${raiz}assets/img/rodasworks-wordmark.png" alt="Rodas Works" width="640" height="92"></a>
+  <a class="marca" href="${raiz}" aria-label="Rodas Works, inicio">
+    <span class="marca-oscura"><img class="marca-rw" src="${raiz}assets/img/rodasworks-rw.png" alt="" width="240" height="107"><img class="marca-nombre" src="${raiz}assets/img/rodasworks-wordmark.png" alt="" width="640" height="92"></span>
+    <span class="marca-blanca"><img class="marca-rw" src="${raiz}assets/img/rodasworks-rw-blanco.png" alt="" width="240" height="107"><img class="marca-nombre" src="${raiz}assets/img/rodasworks-wordmark-blanco.png" alt="" width="640" height="92"></span>
+  </a>
   <nav aria-label="Principal">
     <a href="${raiz}#proyectos">Proyectos</a>
     <a href="${raiz}#sobre-mi">Sobre mí</a>
@@ -100,13 +103,15 @@ const indice = `${head({
 <body class="inicio">
 ${cabeceraSitio("./")}
 <main id="contenido">
+  <div class="portada">
   <section class="intro" aria-labelledby="intro-titulo">
     <h1 id="intro-titulo">Diseño identidades y las llevo a la <span class="t-pantalla">pantalla</span>, al <span class="t-papel">papel</span> y al <span class="t-movimiento">movimiento</span>.</h1>
     <p class="quien">¡Hola! Soy Patricio Rodas, un diseñador gráfico de Santiago de Chile.</p>
   </section>
+  ${saltos}
+  </div>
 
   <section id="proyectos" class="proyectos" aria-label="Proyectos">
-    ${saltos}
   ${conProyectos.map(banda).join("\n  ")}
   </section>
 

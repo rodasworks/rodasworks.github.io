@@ -760,3 +760,129 @@ a:hover {
 .t-movimiento {
   font-style: italic;
 }
+
+/* ---------- Marca: versión oscura o blanca según el fondo ---------- */
+.marca-oscura,
+.marca-blanca {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+}
+.marca-blanca {
+  display: none;
+}
+
+/* ---------- Portada con fotografía (solo inicio) ---------- */
+.portada {
+  --alto-header: 4.7rem;
+  position: relative;
+  margin-top: calc(-1 * var(--alto-header));
+  padding-top: var(--alto-header);
+  color: #ffffff;
+  background-color: #2b2622;
+  background-image:
+    linear-gradient(90deg, rgba(18, 16, 14, 0.78) 0%, rgba(18, 16, 14, 0.5) 45%, rgba(18, 16, 14, 0.15) 100%),
+    image-set(url("../img/portada-2000.webp") type("image/webp") 1x);
+  background-size: cover;
+  background-position: center 40%;
+}
+@media (max-width: 75rem) {
+  .portada {
+    background-image:
+      linear-gradient(90deg, rgba(18, 16, 14, 0.78) 0%, rgba(18, 16, 14, 0.5) 50%, rgba(18, 16, 14, 0.2) 100%),
+      url("../img/portada-1200.webp");
+  }
+}
+@media (max-width: 48rem) {
+  .portada {
+    background-image:
+      linear-gradient(180deg, rgba(18, 16, 14, 0.55) 0%, rgba(18, 16, 14, 0.75) 100%),
+      url("../img/portada-movil.webp");
+    background-position: center top;
+  }
+}
+
+.portada .intro h1 {
+  color: #ffffff;
+}
+.portada .quien {
+  color: rgba(255, 255, 255, 0.88);
+}
+
+/* Franjas desenfocadas: cabecera (en el inicio) y saltos a categorías */
+.inicio .sitio,
+.portada .saltos {
+  background: rgba(24, 22, 20, 0.32);
+  -webkit-backdrop-filter: blur(16px) saturate(1.15);
+  backdrop-filter: blur(16px) saturate(1.15);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+.inicio .sitio {
+  color: #ffffff;
+  transition: background-color 0.3s, color 0.3s;
+}
+.inicio .sitio .marca-oscura {
+  display: none;
+}
+.inicio .sitio .marca-blanca {
+  display: flex;
+}
+.inicio .sitio nav a:hover {
+  color: var(--azul-claro);
+}
+.inicio :focus-visible {
+  outline-color: var(--azul-claro);
+}
+
+/* Al empezar a bajar, la cabecera flotante se vuelve blanca y deja ver lo de atrás difuminado */
+.inicio .sitio.sobre-claro {
+  background: rgba(255, 255, 255, 0.72);
+  color: var(--negro);
+  border-color: var(--linea);
+}
+.inicio .sitio.sobre-claro .marca-oscura {
+  display: flex;
+}
+.inicio .sitio.sobre-claro .marca-blanca {
+  display: none;
+}
+.inicio .sitio.sobre-claro nav a:hover {
+  color: var(--azul);
+}
+
+.portada .saltos {
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+}
+.portada .saltos a {
+  color: #ffffff;
+  border-color: rgba(255, 255, 255, 0.45);
+}
+.portada .saltos a:hover {
+  color: #ffffff;
+  border-color: var(--azul-claro);
+  background: rgba(47, 73, 224, 0.35);
+}
+.portada .saltos .n {
+  opacity: 0.75;
+}
+
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  .inicio .sitio,
+  .portada .saltos {
+    background: rgba(24, 22, 20, 0.7);
+  }
+}
+@media (max-width: 48rem) {
+  .portada {
+    --alto-header: 7.5rem;
+  }
+}
+
+.inicio .sitio {
+  z-index: 6;
+}
+@media (max-width: 48rem) {
+  .inicio .sitio {
+    position: relative;
+  }
+}

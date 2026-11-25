@@ -14,7 +14,10 @@
 <body class="inicio">
 <a class="saltar" href="#contenido">Ir al contenido</a>
 <header class="sitio">
-  <a class="marca" href="./"><img class="marca-rw" src="./assets/img/rodasworks-rw.png" alt="" width="240" height="107"><img class="marca-nombre" src="./assets/img/rodasworks-wordmark.png" alt="Rodas Works" width="640" height="92"></a>
+  <a class="marca" href="./" aria-label="Rodas Works, inicio">
+    <span class="marca-oscura"><img class="marca-rw" src="./assets/img/rodasworks-rw.png" alt="" width="240" height="107"><img class="marca-nombre" src="./assets/img/rodasworks-wordmark.png" alt="" width="640" height="92"></span>
+    <span class="marca-blanca"><img class="marca-rw" src="./assets/img/rodasworks-rw-blanco.png" alt="" width="240" height="107"><img class="marca-nombre" src="./assets/img/rodasworks-wordmark-blanco.png" alt="" width="640" height="92"></span>
+  </a>
   <nav aria-label="Principal">
     <a href="./#proyectos">Proyectos</a>
     <a href="./#sobre-mi">Sobre mí</a>
@@ -22,18 +25,20 @@
   </nav>
 </header>
 <main id="contenido">
+  <div class="portada">
   <section class="intro" aria-labelledby="intro-titulo">
     <h1 id="intro-titulo">Diseño identidades y las llevo a la <span class="t-pantalla">pantalla</span>, al <span class="t-papel">papel</span> y al <span class="t-movimiento">movimiento</span>.</h1>
     <p class="quien">¡Hola! Soy Patricio Rodas, un diseñador gráfico de Santiago de Chile.</p>
   </section>
-
-  <section id="proyectos" class="proyectos" aria-label="Proyectos">
-    <nav class="saltos" aria-label="Categorías">
+  <nav class="saltos" aria-label="Categorías">
   <a href="#audiovisual">Audiovisual <span class="n">3</span></a>
   <a href="#branding">Branding <span class="n">2</span></a>
   <a href="#editorial">Editorial <span class="n">5</span></a>
   <a href="#aprender-jugando">Aprender jugando <span class="n">1</span></a>
 </nav>
+  </div>
+
+  <section id="proyectos" class="proyectos" aria-label="Proyectos">
   <section class="banda destacada" id="audiovisual" aria-labelledby="b-audiovisual">
     <div class="banda-texto">
       <h2 id="b-audiovisual">Audiovisual</h2>

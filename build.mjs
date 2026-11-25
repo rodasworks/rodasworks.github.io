@@ -111,11 +111,15 @@ ${cabeceraSitio("./")}
   </section>
 
   <section id="sobre-mi" class="sobre" aria-labelledby="sobre-titulo">
-    <h2 id="sobre-titulo">Sobre mí</h2>
+    <div class="sobre-lateral">
+      <h2 id="sobre-titulo">Sobre mí</h2>
+      <figure class="foto-pendiente"><span>Foto pendiente</span></figure>
+    </div>
     <div class="sobre-texto">
       <p>Diseñador gráfico de la Universidad Andrés Bello (2018). Desde 2022 llevo los medios digitales de TOP Underwear: campañas, redes sociales, mailing, pauta en Meta y Google, y producción de imagen y video con IA.</p>
       <p>Me interesa que cada punto de contacto de una marca se sienta parte de lo mismo: el logo, el post, el correo y el anuncio. Por eso trabajo entre el diseño, la comunicación y la estrategia.</p>
       <p><span class="pendiente">Por completar: experiencia anterior (Terrafirma) y trabajos freelance.</span></p>
+      <p><span class="pendiente">Por completar: botón «Descargar CV (PDF)»</span></p>
     </div>
     <dl class="herramientas">
       <div><dt>Diseño</dt><dd><span class="pendiente">Por completar</span></dd></div>

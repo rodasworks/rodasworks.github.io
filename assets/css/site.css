@@ -603,3 +603,18 @@ figure {
   cursor: default;
   border-color: var(--linea);
 }
+
+.sobre-lateral {
+  display: grid;
+  align-content: start;
+  gap: 1.25rem;
+}
+.foto-pendiente {
+  display: grid;
+  place-items: center;
+  aspect-ratio: 4 / 5;
+  max-width: 14rem;
+  background: var(--etiqueta);
+  color: var(--gris);
+  font-size: var(--t-0);
+}

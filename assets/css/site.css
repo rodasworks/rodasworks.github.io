@@ -123,11 +123,17 @@ figure {
 }
 
 .marca {
-  display: block;
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
   line-height: 0;
 }
-.marca img {
-  height: 1.35rem;
+.marca-rw {
+  height: 2.4rem;
+  width: auto;
+}
+.marca-nombre {
+  height: 1.2rem;
   width: auto;
 }
 

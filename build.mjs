@@ -35,7 +35,7 @@ const head = ({ titulo, descripcion, raiz }) => `<!doctype html>
 
 const cabeceraSitio = (raiz) => `<a class="saltar" href="#contenido">Ir al contenido</a>
 <header class="sitio">
-  <a class="marca" href="${raiz}"><img src="${raiz}assets/img/rodasworks-wordmark.png" alt="Rodas Works" width="640" height="92"></a>
+  <a class="marca" href="${raiz}"><img class="marca-rw" src="${raiz}assets/img/rodasworks-rw.png" alt="" width="240" height="107"><img class="marca-nombre" src="${raiz}assets/img/rodasworks-wordmark.png" alt="Rodas Works" width="640" height="92"></a>
   <nav aria-label="Principal">
     <a href="${raiz}#proyectos">Proyectos</a>
     <a href="${raiz}#sobre-mi">Sobre mí</a>

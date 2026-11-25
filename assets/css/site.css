@@ -1,5 +1,5 @@
 /* Rodas Works — hoja de estilos
-   Grises del logo y tipografía Figtree (alternativa libre a Avenir). Cada categoría es una banda con sus proyectos en fila. */
+   Grises del logo, acento azul eléctrico y tipografía Figtree (alternativa libre a Avenir). Cada categoría es una banda con sus proyectos en fila. */
 
 @font-face {
   font-family: "Figtree";
@@ -15,6 +15,8 @@
   --gris: #575757;
   --linea: #cdcdcd;
   --etiqueta: #dcdcdc;
+  --azul: #2f49e0;
+  --azul-claro: #8ea0ff; /* sobre fondos oscuros */
   --pendiente-fondo: #ffe27a;
 
   --margen: clamp(1.25rem, 4vw, 3.5rem);
@@ -68,7 +70,7 @@ a {
 }
 
 :focus-visible {
-  outline: 2px solid currentColor;
+  outline: 2px solid var(--azul);
   outline-offset: 3px;
   border-radius: 2px;
 }
@@ -668,14 +670,14 @@ figure {
   min-height: 2.75rem;
   padding: 0.6rem 1.2rem;
   border-radius: 999px;
-  background: var(--negro);
-  color: var(--blanco);
+  background: var(--azul);
+  color: #ffffff;
   font-size: var(--t-1);
   font-weight: 600;
   text-decoration: none;
 }
 .boton:hover {
-  background: #2a2a2a;
+  background: #2238b8;
 }
 
 /* Libros: portada con sombra suave, como un libro apoyado sobre la página */
@@ -686,4 +688,36 @@ figure {
 }
 .serie:has(.libro) ul {
   padding-bottom: 2rem;
+}
+
+/* ---------- Acento azul ---------- */
+a:hover {
+  text-decoration-color: var(--azul);
+}
+.saltos a:hover,
+.serie-botones button:hover:not(:disabled) {
+  border-color: var(--azul);
+  color: var(--azul);
+}
+.sitio nav a:hover,
+.contacto-links a:hover,
+.caso-categoria a:hover {
+  color: var(--azul);
+}
+.tarjeta:hover .tarjeta-nombre {
+  color: var(--azul);
+}
+.conteo {
+  color: var(--azul);
+}
+.destacada :focus-visible {
+  outline-color: var(--azul-claro);
+}
+.destacada .conteo,
+.destacada .tarjeta:hover .tarjeta-nombre {
+  color: var(--azul-claro);
+}
+.destacada .serie-botones button:hover:not(:disabled) {
+  border-color: var(--azul-claro);
+  color: var(--azul-claro);
 }

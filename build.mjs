@@ -152,7 +152,7 @@ ${cabeceraSitio("./")}
         <p class="dato-pregunta">¿Te diste cuenta?</p>
         <p>Mi nombre completo es Patricio Hogmin Rodas Weng. El logo dice RW por Rodas Weng, mis apellidos, y de paso funciona para Rodas Works, que son mis trabajos.</p>
         <p>Pero hay más: los cortes del dibujo esconden tres de mis iniciales. Una P, una R y una W.</p>
-        <p>¿Las habías visto antes de leer esto? Tienes ojo de diseñador, y eso merece un aplauso.</p>
+        <p>¿Las habías visto antes de leer esto? Entonces tienes ojo para los detalles, el mismo que hace ver una oportunidad donde otros no ven nada. Y si no, no te preocupes: para eso estoy yo.</p>
       </div>
     </div>
     </div>

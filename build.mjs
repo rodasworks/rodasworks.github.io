@@ -118,24 +118,34 @@ ${cabeceraSitio("./")}
     <div class="sobre-texto">
       <p>Diseñador gráfico de la Universidad Andrés Bello (2018). Desde 2022 llevo los medios digitales de TOP Underwear: campañas, redes sociales, mailing, pauta en Meta y Google, y producción de imagen y video con IA.</p>
       <p>Me interesa que cada punto de contacto de una marca se sienta parte de lo mismo: el logo, el post, el correo y el anuncio. Por eso trabajo entre el diseño, la comunicación y la estrategia.</p>
-      <p><span class="pendiente">Por completar: experiencia anterior (Terrafirma) y trabajos freelance.</span></p>
+      <p>Antes, en Terrafirma, también fui Encargado de Medios Digitales: mantenía las gráficas del sitio web y comunicaba los estrenos en redes sociales.</p>
       <p><span class="pendiente">Por completar: botón «Descargar CV (PDF)»</span></p>
     </div>
     <dl class="herramientas">
-      <div><dt>Diseño</dt><dd><span class="pendiente">Por completar</span></dd></div>
+      <div><dt>Diseño</dt><dd>Illustrator, Photoshop, InDesign, After Effects, Blender</dd></div>
       <div><dt>Marketing</dt><dd>Meta Ads, Google Ads, Klaviyo, Shopify</dd></div>
       <div><dt>IA</dt><dd>Seedream, Nano Banana, Veo, Higgsfield</dd></div>
     </dl>
+  </section>
+
+  <section id="logo" class="marca-historia" aria-labelledby="logo-titulo">
+    <h2 id="logo-titulo">El logo</h2>
+    <div class="marca-historia-cuerpo">
+      <img src="./assets/img/rodasworks-logo.png" alt="Logo de Rodas Works: las letras RW en bloques, sobre el nombre Rodas Works." width="720" height="478" loading="lazy">
+      <div class="sobre-texto">
+        <p>Mi nombre completo es Patricio Hogmin Rodas Weng: PHRW. La marca toma dos de esas letras, RW, que también son Rodas Works.</p>
+        <p>El juego está en el dibujo. Las formas están cortadas de manera que, si lo miras con calma, aparecen tres letras: una P, una R y una W.</p>
+      </div>
+    </div>
   </section>
 
   <section id="contacto" class="contacto" aria-labelledby="contacto-titulo">
     <h2 id="contacto-titulo">Contacto</h2>
     <p class="contacto-frase">¿Tienes un proyecto en mente? Escríbeme.</p>
     <ul class="contacto-links">
+      <li><a href="mailto:rodas.works@gmail.com">rodas.works@gmail.com</a></li>
+      <li><a href="https://www.linkedin.com/in/patecorodas/" rel="me">LinkedIn</a></li>
       <li><a href="https://www.instagram.com/rodas_works/" rel="me">Instagram</a></li>
-      <li><span class="pendiente">Por completar: correo</span></li>
-      <li><span class="pendiente">Por completar: LinkedIn</span></li>
-      <li><span class="pendiente">Por completar: WhatsApp (solo mensajes)</span></li>
     </ul>
   </section>
 </main>

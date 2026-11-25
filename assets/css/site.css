@@ -618,3 +618,34 @@ figure {
   color: var(--gris);
   font-size: var(--t-0);
 }
+
+.marca-historia {
+  padding: clamp(3rem, 9vh, 6rem) var(--margen);
+  border-top: 1px solid var(--linea);
+  display: grid;
+  grid-template-columns: minmax(10rem, 1fr) minmax(0, 2.4fr);
+  gap: 1.5rem 3rem;
+}
+.marca-historia h2 {
+  font-size: var(--t-1);
+  font-weight: 600;
+}
+.marca-historia-cuerpo {
+  display: grid;
+  grid-template-columns: minmax(0, 20rem) minmax(0, 1fr);
+  gap: 2rem 3rem;
+  align-items: center;
+}
+.marca-historia-cuerpo img {
+  width: 100%;
+  height: auto;
+}
+@media (max-width: 48rem) {
+  .marca-historia,
+  .marca-historia-cuerpo {
+    grid-template-columns: 1fr;
+  }
+  .marca-historia-cuerpo img {
+    max-width: 16rem;
+  }
+}

@@ -80,7 +80,11 @@ const banda = (c, i) => {
       (p) => `<li>
           <a class="tarjeta ${p.imagenes[0]?.formato ?? "ancha"}${p.categoria === "editorial" ? " libro" : ""}" href="proyectos/${p.slug}/" style="${universo(p)}">
             <span class="tarjeta-anio">${plano(p.anio) ? esc(p.anio) : "&nbsp;"}</span>
-            <span class="tarjeta-img" aria-hidden="true"><span class="tarjeta-img-fondo"><span>Imagen pendiente</span></span>${p.categoria === "audiovisual" ? '<span class="play"><svg viewBox="0 0 24 24" width="24" height="24"><path d="M8 5.5v13l10.5-6.5z" fill="currentColor"/></svg></span>' : ""}</span>
+            <span class="tarjeta-img" aria-hidden="true">${
+              p.categoria === "editorial"
+                ? `<span class="libro-cuerpo"><span class="libro-pagina"><span>Ver más</span></span><span class="libro-tapa"><span class="libro-tapa-frente"><span>Imagen pendiente</span></span><span class="libro-tapa-dorso"></span></span></span>`
+                : `<span class="tarjeta-img-fondo"><span>Imagen pendiente</span></span>${p.categoria === "audiovisual" ? '<span class="play"><svg viewBox="0 0 24 24" width="24" height="24"><path d="M8 5.5v13l10.5-6.5z" fill="currentColor"/></svg></span>' : ""}`
+            }</span>
             <span class="tarjeta-nombre" style="view-transition-name:t-${p.slug}">${esc(p.nombre)}</span>
             <span class="tarjeta-resumen">${plano(p.resumen) ? esc(p.resumen) : `Cliente: ${esc(plano(p.cliente) || "por completar")}`}</span>
           </a>

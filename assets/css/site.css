@@ -324,7 +324,8 @@ figure {
   font-size: var(--t-0);
   text-align: center;
 }
-.tarjeta-img span {
+.tarjeta-img-fondo > span,
+.libro-tapa-frente > span {
   opacity: 0.7;
 }
 .vertical .tarjeta-img {
@@ -1225,4 +1226,160 @@ a:hover {
   .destacada .tarjeta:hover .tarjeta-img-fondo {
     transform: none;
   }
+}
+
+/* ---------- Libros que se abren (Editorial) ----------
+   Al pasar el mouse, la tapa gira hacia la izquierda sobre el lomo, aparece la página interior con "Ver más"
+   y la tarjeta se ensancha al doble, empujando a los libros de la derecha. */
+.libro {
+  --ancho-libro: calc(var(--alto-pieza) * 2 / 3);
+  --abrir: 0.7s cubic-bezier(0.3, 0.7, 0.2, 1);
+}
+.libro .tarjeta-img {
+  width: var(--ancho-libro);
+  aspect-ratio: auto;
+  padding: 0;
+  background: none;
+  overflow: visible;
+  box-shadow: none;
+  perspective: 1800px;
+  transition: width var(--abrir);
+}
+.libro-cuerpo {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: var(--ancho-libro);
+  transform-style: preserve-3d;
+  transition: left var(--abrir);
+}
+.libro-pagina {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  background:
+    linear-gradient(90deg, rgba(0, 0, 0, 0.14), rgba(0, 0, 0, 0) 14%),
+    #fbfaf7;
+  color: var(--negro);
+  font-size: var(--t-1);
+  font-weight: 700;
+  box-shadow:
+    0 22px 28px -18px rgba(0, 0, 0, 0.45),
+    0 2px 6px rgba(0, 0, 0, 0.12);
+}
+.libro-pagina span {
+  border-bottom: 2px solid var(--azul);
+  padding-bottom: 0.15rem;
+}
+.libro-tapa {
+  position: absolute;
+  inset: 0;
+  transform-origin: left center;
+  transform-style: preserve-3d;
+  transition: transform var(--abrir);
+}
+.libro-tapa-frente,
+.libro-tapa-dorso {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  padding: 1rem;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  font-size: var(--t-0);
+  text-align: center;
+}
+.libro-tapa-frente {
+  background: var(--fondo);
+  color: var(--tinta);
+  box-shadow:
+    0 22px 28px -18px rgba(0, 0, 0, 0.45),
+    0 2px 6px rgba(0, 0, 0, 0.12);
+}
+.libro-tapa-frente span {
+  opacity: 0.7;
+}
+.libro-tapa-dorso {
+  transform: rotateY(180deg);
+  background:
+    linear-gradient(270deg, rgba(0, 0, 0, 0.18), rgba(0, 0, 0, 0) 12%),
+    color-mix(in srgb, var(--fondo) 82%, #ffffff);
+  box-shadow: 0 22px 28px -18px rgba(0, 0, 0, 0.4);
+}
+
+@media (hover: hover) {
+  .libro:hover .tarjeta-img,
+  .libro:focus-visible .tarjeta-img {
+    width: calc(var(--ancho-libro) * 2);
+  }
+  .libro:hover .libro-cuerpo,
+  .libro:focus-visible .libro-cuerpo {
+    left: var(--ancho-libro);
+  }
+  .libro:hover .libro-tapa,
+  .libro:focus-visible .libro-tapa {
+    transform: rotateY(-180deg);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .libro .tarjeta-img,
+  .libro-cuerpo,
+  .libro-tapa {
+    transition: none;
+  }
+}
+
+/* Orden de capas estable: la página queda plana debajo y solo la tapa gira en 3D */
+.libro .tarjeta-img {
+  perspective: none;
+}
+.libro-cuerpo {
+  perspective: 1800px;
+  transform-style: flat;
+}
+.libro-pagina {
+  z-index: 0;
+}
+.libro-tapa {
+  z-index: 1;
+}
+
+/* La tapa gira como un solo plano; a mitad del giro se cambia el frente por el dorso
+   (más confiable entre navegadores que depender de backface-visibility). */
+.libro {
+  --mitad: 0.25s;
+}
+.libro-tapa {
+  transform-style: flat;
+}
+.libro-tapa-frente,
+.libro-tapa-dorso {
+  -webkit-backface-visibility: visible;
+  backface-visibility: visible;
+  transition: opacity 0s linear var(--mitad);
+}
+.libro-tapa-dorso {
+  transform: none;
+  opacity: 0;
+  background:
+    linear-gradient(90deg, rgba(0, 0, 0, 0.18), rgba(0, 0, 0, 0) 12%),
+    color-mix(in srgb, var(--fondo) 82%, #ffffff);
+}
+@media (hover: hover) {
+  .libro:hover .libro-tapa-frente,
+  .libro:focus-visible .libro-tapa-frente {
+    opacity: 0;
+  }
+  .libro:hover .libro-tapa-dorso,
+  .libro:focus-visible .libro-tapa-dorso {
+    opacity: 1;
+  }
+}
+
+/* Más aire entre libros: el doble del espacio de las otras series */
+.serie:has(.libro) ul {
+  gap: clamp(1.5rem, 2.8vw, 2.5rem);
 }

@@ -1463,3 +1463,10 @@ a:hover {
 #apoyo-escolar {
   background: #f5f5f5; /* 4 % de negro */
 }
+
+/* Íconos en los botones de categorías */
+.saltos-icono {
+  width: 1.1rem;
+  height: 1.1rem;
+  flex: none;
+}

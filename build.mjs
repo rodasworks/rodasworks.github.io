@@ -70,8 +70,24 @@ const conProyectos = categorias
   .map((c) => ({ ...c, lista: proyectos.filter((p) => p.categoria === c.slug) }))
   .filter((c) => c.lista.length);
 
+// Íconos de las categorías (Lucide, licencia ISC)
+const iconos = {
+  audiovisual:
+    '<path d="M20.2 6 3 11l-.9-2.4c-.3-1.1.3-2.2 1.3-2.5l13.5-4c1.1-.3 2.2.3 2.5 1.3Z"/><path d="m6.2 5.3 3.1 3.9"/><path d="m12.4 3.4 3.1 4"/><path d="M3 11h18v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2Z"/>',
+  branding:
+    '<path d="M21.174 6.812a1 1 0 0 0-3.986-3.987L3.842 16.174a2 2 0 0 0-.5.83l-1.321 4.352a.5.5 0 0 0 .623.622l4.353-1.32a2 2 0 0 0 .83-.497z"/><path d="m15 5 4 4"/>',
+  editorial:
+    '<path d="M12 7v14"/><path d="M3 18a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h5a4 4 0 0 1 4 4 4 4 0 0 1 4-4h5a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-6a3 3 0 0 0-3 3 3 3 0 0 0-3-3z"/>',
+  "apoyo-escolar":
+    '<path d="M21.42 10.922a1 1 0 0 0-.019-1.838L12.83 5.18a2 2 0 0 0-1.66 0L2.6 9.08a1 1 0 0 0 0 1.832l8.57 3.908a2 2 0 0 0 1.66 0z"/><path d="M22 10v6"/><path d="M6 12.5V16a6 3 0 0 0 12 0v-3.5"/>',
+};
+const icono = (slug) =>
+  iconos[slug]
+    ? `<svg class="saltos-icono" aria-hidden="true" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">${iconos[slug]}</svg>`
+    : "";
+
 const saltos = `<nav class="saltos" aria-label="Categorías">
-  ${conProyectos.map((c) => `<a href="#${c.slug}">${esc(c.nombre)} <span class="n">${c.lista.length}</span></a>`).join("\n  ")}
+  ${conProyectos.map((c) => `<a href="#${c.slug}">${icono(c.slug)}${esc(c.nombre)} <span class="n">${c.lista.length}</span></a>`).join("\n  ")}
 </nav>`;
 
 const banda = (c, i) => {
